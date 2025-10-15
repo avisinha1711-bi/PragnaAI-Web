@@ -21,7 +21,6 @@
             --text-light: #cccccc;
             --white: #ffffff;
             --dark-bg: #000000;
-            --card-bg: #111111;
         }
         
         body {
@@ -29,23 +28,45 @@
             color: var(--text-dark);
             line-height: 1.6;
             min-height: 100vh;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Background pattern with connecting lines */
+        .background-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+        }
+        
+        .dot {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background-color: #4da6ff;
+            border-radius: 50%;
+        }
+        
+        .line {
+            position: absolute;
+            background-color: #4da6ff;
+            transform-origin: 0 0;
         }
         
         .content-wrapper {
-            width: 90%;
-            max-width: 1000px;
-            margin: 30px auto;
-            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 40px;
         }
         
         header {
             text-align: center;
-            padding: 20px 0;
-            margin-bottom: 50px;
+            padding: 40px 0;
+            margin-bottom: 60px;
         }
         
         .logo {
@@ -58,7 +79,7 @@
         }
         
         .logo-text {
-            font-size: 4.5rem;
+            font-size: 5rem;
             font-weight: 800;
             background: linear-gradient(45deg, var(--primary-color), var(--primary-light));
             -webkit-background-clip: text;
@@ -67,63 +88,66 @@
         }
         
         .tagline {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             color: var(--primary-color);
             margin-top: 10px;
             font-weight: 600;
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
         }
         
         .vision-section {
-            margin: 40px 0;
-            padding: 30px;
-            background: var(--card-bg);
-            border-radius: 15px;
-            border-left: 6px solid var(--primary-color);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            margin: 80px 0;
         }
         
         .section-title {
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: var(--primary-color);
-            margin-bottom: 25px;
+            margin-bottom: 40px;
             text-align: center;
-            padding-bottom: 10px;
-            border-bottom: 2px solid rgba(77, 166, 255, 0.3);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
         }
         
         .vision-content {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
         }
         
         .vision-point {
             display: flex;
             align-items: flex-start;
-            gap: 15px;
-            padding: 15px;
-            background: rgba(30, 30, 30, 0.7);
-            border-radius: 10px;
-            transition: transform 0.3s, box-shadow 0.3s;
+            gap: 20px;
+            padding: 20px 0;
+            transition: transform 0.3s;
         }
         
         .vision-point:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
         }
         
         .vision-icon {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             background: linear-gradient(45deg, var(--primary-color), var(--primary-light));
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--white);
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             flex-shrink: 0;
         }
         
@@ -132,49 +156,43 @@
         }
         
         .vision-text h3 {
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             color: var(--primary-color);
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
         
         .vision-text p {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: var(--text-light);
-            line-height: 1.6;
+            line-height: 1.7;
         }
         
         .meaning-section {
-            margin: 40px 0;
-            padding: 30px;
-            background: var(--card-bg);
-            border-radius: 15px;
+            margin: 100px 0;
             text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
         
         .meaning-title {
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: var(--primary-color);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             font-weight: 700;
         }
         
         .meaning-subtitle {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             color: var(--text-light);
-            margin-bottom: 20px;
+            margin-bottom: 40px;
             font-style: italic;
         }
         
         .meaning-content {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             color: var(--text-dark);
             line-height: 1.8;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 20px;
-            background: rgba(30, 30, 30, 0.7);
-            border-radius: 10px;
+            text-align: left;
         }
         
         .highlight {
@@ -183,50 +201,45 @@
         }
         
         .demo-link-section {
-            margin: 40px 0;
-            padding: 30px;
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
-            border-radius: 15px;
+            margin: 100px 0;
             text-align: center;
-            color: var(--white);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
         }
         
         .demo-title {
-            font-size: 2rem;
-            margin-bottom: 20px;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
             font-weight: 600;
+            color: var(--primary-color);
         }
         
         .demo-description {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            max-width: 700px;
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            max-width: 800px;
             margin-left: auto;
             margin-right: auto;
-            line-height: 1.6;
+            line-height: 1.7;
+            color: var(--text-light);
         }
         
         .demo-btn {
             display: inline-block;
-            padding: 18px 40px;
-            background: var(--dark-bg);
-            color: var(--primary-color);
+            padding: 20px 50px;
+            background: linear-gradient(45deg, var(--primary-color), var(--primary-light));
+            color: var(--dark-bg);
             border: none;
             border-radius: 50px;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: 700;
             cursor: pointer;
             transition: transform 0.3s, box-shadow 0.3s;
             text-decoration: none;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 5px 15px rgba(77, 166, 255, 0.3);
         }
         
         .demo-btn:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
-            background: #111111;
-            color: var(--primary-light);
+            box-shadow: 0 10px 25px rgba(77, 166, 255, 0.5);
         }
         
         .demo-btn i {
@@ -235,17 +248,17 @@
         
         .footer-text {
             text-align: center;
-            margin-top: 30px;
-            padding: 20px;
+            margin-top: 80px;
+            padding: 40px 20px;
             color: var(--primary-color);
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: 500;
+            border-top: 1px solid rgba(77, 166, 255, 0.2);
         }
         
         @media (max-width: 768px) {
             .content-wrapper {
-                width: 95%;
-                padding: 20px 10px;
+                padding: 40px 20px;
             }
             
             .logo-text {
@@ -253,34 +266,37 @@
             }
             
             .tagline {
-                font-size: 1.2rem;
+                font-size: 1.4rem;
             }
             
             .section-title {
-                font-size: 1.7rem;
-            }
-            
-            .meaning-title {
                 font-size: 2rem;
             }
             
-            .meaning-content {
-                font-size: 1.1rem;
+            .meaning-title {
+                font-size: 2.2rem;
             }
             
-            .vision-point {
-                flex-direction: column;
-                text-align: center;
+            .meaning-content {
+                font-size: 1.2rem;
+            }
+            
+            .vision-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
             }
             
             .demo-btn {
-                padding: 15px 30px;
-                font-size: 1.1rem;
+                padding: 16px 40px;
+                font-size: 1.2rem;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Background pattern with connecting lines -->
+    <div class="background-pattern" id="backgroundPattern"></div>
+    
     <div class="content-wrapper">
         <header>
             <div class="logo">
@@ -357,5 +373,75 @@
         PragnaAI Research & Development<br>
         © 2025 PragnaAI - Transforming Early Cancer Detection
     </div>
+
+    <script>
+        // Create background pattern with connecting lines
+        document.addEventListener('DOMContentLoaded', function() {
+            const pattern = document.getElementById('backgroundPattern');
+            const dots = [];
+            const lines = [];
+            
+            // Create dots
+            for (let i = 0; i < 40; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'dot';
+                
+                // Random position
+                const left = Math.random() * 100;
+                const top = Math.random() * 100;
+                
+                dot.style.left = `${left}%`;
+                dot.style.top = `${top}%`;
+                
+                // Random size variation
+                const size = 4 + Math.random() * 4;
+                dot.style.width = `${size}px`;
+                dot.style.height = `${size}px`;
+                
+                // Random opacity
+                dot.style.opacity = 0.2 + Math.random() * 0.3;
+                
+                pattern.appendChild(dot);
+                dots.push({
+                    element: dot,
+                    x: left,
+                    y: top
+                });
+            }
+            
+            // Create connecting lines between nearby dots
+            for (let i = 0; i < dots.length; i++) {
+                for (let j = i + 1; j < dots.length; j++) {
+                    const dot1 = dots[i];
+                    const dot2 = dots[j];
+                    
+                    // Calculate distance between dots
+                    const dx = dot1.x - dot2.x;
+                    const dy = dot1.y - dot2.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    // Only connect dots that are close to each other
+                    if (distance < 20) {
+                        const line = document.createElement('div');
+                        line.className = 'line';
+                        
+                        // Calculate line properties
+                        const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+                        const length = distance;
+                        
+                        line.style.width = `${length}%`;
+                        line.style.height = '1px';
+                        line.style.left = `${dot1.x}%`;
+                        line.style.top = `${dot1.y}%`;
+                        line.style.transform = `rotate(${angle}deg)`;
+                        line.style.opacity = 0.1 + (0.2 * (1 - distance/20));
+                        
+                        pattern.appendChild(line);
+                        lines.push(line);
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 </html>

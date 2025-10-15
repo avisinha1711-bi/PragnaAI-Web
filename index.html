@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PragnaAI - Early Cancer Diagnosis Vision</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary-color: #0d4a8c;
+            --primary-light: #0d7ba8;
+            --accent-color: #2ecc71;
+            --text-dark: #222222;
+            --text-light: #555555;
+            --white: #ffffff;
+            --sky-blue: #e6f2ff;
+            --light-blue: #cce5ff;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #e6f2ff 0%, #cce5ff 100%);
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 30px auto;
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 30px rgba(13, 74, 140, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
+        }
+        
+        header {
+            text-align: center;
+            padding: 20px 0;
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .logo-text {
+            font-size: 4.5rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--primary-color), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 10px rgba(13, 74, 140, 0.1);
+        }
+        
+        .tagline {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-top: 10px;
+            font-weight: 600;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .vision-section {
+            margin: 40px 0;
+            padding: 30px;
+            background: var(--sky-blue);
+            border-radius: 15px;
+            border-left: 6px solid var(--primary-color);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            text-align: center;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(13, 74, 140, 0.3);
+        }
+        
+        .vision-content {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .vision-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 15px;
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .vision-point:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .vision-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary-color), var(--primary-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        
+        .vision-text {
+            flex: 1;
+        }
+        
+        .vision-text h3 {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+        
+        .vision-text p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        .meaning-section {
+            margin: 40px 0;
+            padding: 30px;
+            background: var(--light-blue);
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .meaning-title {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .meaning-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .meaning-content {
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .highlight {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+        
+        .demo-link-section {
+            margin: 40px 0;
+            padding: 30px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            border-radius: 15px;
+            text-align: center;
+            color: var(--white);
+            box-shadow: 0 10px 20px rgba(13, 74, 140, 0.3);
+        }
+        
+        .demo-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .demo-description {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+        
+        .demo-btn {
+            display: inline-block;
+            padding: 18px 40px;
+            background: var(--white);
+            color: var(--primary-color);
+            border: none;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .demo-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .demo-btn i {
+            margin-left: 10px;
+        }
+        
+        .footer-text {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            color: var(--primary-color);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 25px;
+            }
+            
+            .logo-text {
+                font-size: 3.5rem;
+            }
+            
+            .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.7rem;
+            }
+            
+            .meaning-title {
+                font-size: 2rem;
+            }
+            
+            .meaning-content {
+                font-size: 1.1rem;
+            }
+            
+            .vision-point {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .demo-btn {
+                padding: 15px 30px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="logo-text">PragnaAI</div>
+            </div>
+            <div class="tagline">Intelligence that perceives diseases before they manifest</div>
+        </header>
+        
+        <section class="vision-section">
+            <h2 class="section-title">Vision of Early Cancer Diagnosis</h2>
+            
+            <div class="vision-content">
+                <div class="vision-point">
+                    <div class="vision-icon">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <div class="vision-text">
+                        <h3>Revolutionary Detection Technology</h3>
+                        <p>PragnaAI leverages advanced photoacoustic spectroscopy to detect molecular-level changes in lactic acid metabolism, identifying cancer biomarkers long before traditional methods can.</p>
+                    </div>
+                </div>
+                
+                <div class="vision-point">
+                    <div class="vision-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="vision-text">
+                        <h3>AI-Powered Predictive Analysis</h3>
+                        <p>Our multi-agent AI system analyzes molecular vibration patterns in lactic acid, providing accurate cancer probability assessments with interpretable reasoning for medical professionals.</p>
+                    </div>
+                </div>
+                
+                <div class="vision-point">
+                    <div class="vision-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="vision-text">
+                        <h3>Proactive Healthcare Intervention</h3>
+                        <p>By detecting cancer at its earliest metabolic stages, PragnaAI enables proactive treatment strategies that significantly improve patient outcomes and survival rates.</p>
+                    </div>
+                </div>
+                
+                <div class="vision-point">
+                    <div class="vision-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="vision-text">
+                        <h3>Accessible Cancer Screening</h3>
+                        <p>Our technology aims to make early cancer detection more accessible, affordable, and non-invasive, transforming how we approach preventive healthcare worldwide.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="meaning-section">
+            <h2 class="meaning-title">The Meaning of Pragna</h2>
+            <div class="meaning-subtitle">From Sanskrit: प्रज्ञा (Prajñā)</div>
+            <div class="meaning-content">
+                <p><span class="highlight">Pragna</span> embodies the essence of <span class="highlight">transcendent wisdom</span>, <span class="highlight">intuitive understanding</span>, and <span class="highlight">profound insight</span> that goes beyond conventional knowledge.</p>
+                <p>In our context, PragnaAI represents the <span class="highlight">intelligence that perceives what the eyes cannot see</span> - detecting the subtle molecular signatures of disease before they manifest as physical symptoms.</p>
+            </div>
+        </section>
+        
+        <section class="demo-link-section">
+            <h2 class="demo-title">Experience PragnaAI</h2>
+            <p class="demo-description">Explore our interactive prototype demonstrating how PragnaAI analyzes lactic acid molecular vibrations for early cancer detection through AI-powered photoacoustic diagnosis.</p>
+            <a href="https://avisinha1711-bi.github.io/PragnaAI-Model/" class="demo-btn" target="_blank">
+                Launch PragnaAI Demo <i class="fas fa-external-link-alt"></i>
+            </a>
+        </section>
+    </div>
+    
+    <div class="footer-text">
+        PragnaAI Research & Development<br>
+        © 2025 PragnaAI - Transforming Early Cancer Detection
+    </div>
+</body>
+</html>

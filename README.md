@@ -1,2 +1,2 @@
 # PragnaAI-Web
-Commercial web to redirect to web software
+Commercial web for redirection to web software

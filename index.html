@@ -49,6 +49,7 @@
             height: 6px;
             background-color: #4da6ff;
             border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
         }
         
         .line {
@@ -67,6 +68,7 @@
             text-align: center;
             padding: 40px 0;
             margin-bottom: 60px;
+            animation: fadeInUp 1.2s ease-out;
         }
         
         .logo {
@@ -85,6 +87,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-shadow: 0 2px 10px rgba(77, 166, 255, 0.3);
+            animation: pulse 3s infinite alternate;
         }
         
         .tagline {
@@ -94,6 +97,7 @@
             font-weight: 600;
             max-width: 700px;
             margin: 0 auto;
+            animation: fadeIn 1.5s ease-out 0.5s both;
         }
         
         .vision-section {
@@ -106,6 +110,7 @@
             margin-bottom: 40px;
             text-align: center;
             position: relative;
+            animation: fadeInUp 1s ease-out 0.8s both;
         }
         
         .section-title::after {
@@ -117,6 +122,7 @@
             width: 100px;
             height: 3px;
             background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+            animation: expandWidth 1.5s ease-out 1.2s both;
         }
         
         .vision-content {
@@ -132,7 +138,14 @@
             gap: 20px;
             padding: 20px 0;
             transition: transform 0.3s;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
         }
+        
+        .vision-point:nth-child(1) { animation-delay: 1s; }
+        .vision-point:nth-child(2) { animation-delay: 1.2s; }
+        .vision-point:nth-child(3) { animation-delay: 1.4s; }
+        .vision-point:nth-child(4) { animation-delay: 1.6s; }
         
         .vision-point:hover {
             transform: translateY(-5px);
@@ -149,6 +162,12 @@
             color: var(--white);
             font-size: 1.8rem;
             flex-shrink: 0;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .vision-point:hover .vision-icon {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(77, 166, 255, 0.6);
         }
         
         .vision-text {
@@ -170,6 +189,8 @@
         .meaning-section {
             margin: 100px 0;
             text-align: center;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1.8s both;
         }
         
         .meaning-title {
@@ -198,11 +219,30 @@
         .highlight {
             color: var(--primary-color);
             font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.5s ease;
+        }
+        
+        .meaning-content:hover .highlight::after {
+            width: 100%;
         }
         
         .demo-link-section {
             margin: 100px 0;
             text-align: center;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 2.2s both;
         }
         
         .demo-title {
@@ -235,6 +275,23 @@
             transition: transform 0.3s, box-shadow 0.3s;
             text-decoration: none;
             box-shadow: 0 5px 15px rgba(77, 166, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .demo-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .demo-btn:hover::before {
+            left: 100%;
         }
         
         .demo-btn:hover {
@@ -254,6 +311,46 @@
             font-size: 1.1rem;
             font-weight: 500;
             border-top: 1px solid rgba(77, 166, 255, 0.2);
+            opacity: 0;
+            animation: fadeIn 1s ease-out 2.6s both;
+        }
+        
+        /* Animation Keyframes */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes expandWidth {
+            from { width: 0; }
+            to { width: 100px; }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 5px rgba(77, 166, 255, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(77, 166, 255, 0.8); }
         }
         
         @media (max-width: 768px) {
@@ -363,7 +460,7 @@
         <section class="demo-link-section">
             <h2 class="demo-title">Experience PragnaAI</h2>
             <p class="demo-description">Explore our interactive prototype demonstrating how PragnaAI analyzes lactic acid molecular vibrations for early cancer detection through AI-powered photoacoustic diagnosis.</p>
-            <a href="https://avisinha1711-bi.github.io/PragnaAI-Model/" class="demo-btn" target="_blank">
+            <a href="https://pragna-ai-bio.github.io/PragnaAI_Web_Software/" class="demo-btn" target="_blank">
                 Launch PragnaAI Demo <i class="fas fa-external-link-alt"></i>
             </a>
         </section>
@@ -400,6 +497,9 @@
                 
                 // Random opacity
                 dot.style.opacity = 0.2 + Math.random() * 0.3;
+                
+                // Random animation delay for floating effect
+                dot.style.animationDelay = `${Math.random() * 8}s`;
                 
                 pattern.appendChild(dot);
                 dots.push({

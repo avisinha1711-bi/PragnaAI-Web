@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PragnaAI Research - Early Cancer Diagnosis Vision</title>
+    <title>PragnaAI - Early Cancer Diagnosis Vision</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -14,21 +14,20 @@
         }
         
         :root {
-            --primary-color: #4da6ff;
-            --primary-light: #66b3ff;
-            --primary-dark: #1a6fc4;
+            --primary-blue: #0096FF;
+            --primary-dark: #0a1931;
             --accent-color: #2ecc71;
             --text-white: #ffffff;
             --text-light: #e6f2ff;
             --text-muted: #a8c6e6;
             --white: #ffffff;
-            --dark-bg: #0a0a1a;
-            --darker-bg: #050510;
+            --black: #000000;
+            --dark-blue: #0a1931;
             --card-bg: rgba(15, 25, 45, 0.7);
         }
         
         body {
-            background: var(--dark-bg);
+            background: var(--dark-blue);
             color: var(--text-light);
             line-height: 1.7;
             min-height: 100vh;
@@ -37,37 +36,130 @@
             font-size: 18px;
         }
         
-        /* Background pattern with connecting lines */
-        .background-pattern {
+        /* Header Styles */
+        .header {
+            background-color: var(--black);
+            padding: 20px 40px;
             position: fixed;
-            top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.35;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(30, 30, 60, 0.6) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(30, 30, 60, 0.6) 0%, transparent 50%),
-                radial-gradient(circle at 40% 80%, rgba(30, 30, 60, 0.5) 0%, transparent 50%),
-                radial-gradient(circle at 70% 20%, rgba(30, 30, 60, 0.5) 0%, transparent 50%);
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
         }
         
-        .dot {
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #0096FF;
+            letter-spacing: -0.5px;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background-color: var(--white);
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+            padding: 60px 20px;
+        }
+        
+        .hero-content {
+            text-align: center;
+            max-width: 1000px;
+            padding: 0 40px;
+            z-index: 2;
+            position: relative;
+        }
+        
+        .tagline-container {
+            margin-bottom: 40px;
+        }
+        
+        .tagline {
+            font-size: 3.2rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 30px;
+            color: #333;
+            padding: 0 20px;
+        }
+        
+        .tagline-subtext {
+            font-size: 1.5rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+            padding: 0 20px;
+        }
+        
+        /* Transparent Bubbles */
+        .bubble {
             position: absolute;
-            width: 6px;
-            height: 6px;
-            background-color: rgba(255, 255, 255, 0.8);
             border-radius: 50%;
-            animation: float 10s ease-in-out infinite;
-            box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+            background: rgba(0, 150, 255, 0.1);
+            border: 1px solid rgba(0, 150, 255, 0.2);
+            animation: float 15s ease-in-out infinite;
         }
         
-        .line {
-            position: absolute;
-            background: linear-gradient(90deg, rgba(255,255,255,0.8), rgba(77, 166, 255, 0.6));
-            transform-origin: 0 0;
-            transition: opacity 0.8s ease;
+        .bubble-1 {
+            width: 120px;
+            height: 120px;
+            top: 15%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .bubble-2 {
+            width: 80px;
+            height: 80px;
+            top: 25%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+        
+        .bubble-3 {
+            width: 150px;
+            height: 150px;
+            bottom: 20%;
+            left: 15%;
+            animation-delay: 4s;
+        }
+        
+        .bubble-4 {
+            width: 100px;
+            height: 100px;
+            bottom: 15%;
+            right: 10%;
+            animation-delay: 6s;
+        }
+        
+        .bubble-5 {
+            width: 60px;
+            height: 60px;
+            top: 40%;
+            left: 5%;
+            animation-delay: 1s;
+        }
+        
+        .bubble-6 {
+            width: 90px;
+            height: 90px;
+            top: 60%;
+            right: 8%;
+            animation-delay: 3s;
         }
         
         .content-wrapper {
@@ -78,62 +170,10 @@
             z-index: 1;
         }
         
-        header {
-            text-align: center;
-            padding: 60px 0 40px;
-            margin-bottom: 40px;
-            animation: fadeInUp 1.2s ease-out;
-        }
-        
-        .logo {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        
-        .logo-text {
-            font-size: 4.5rem;
-            font-weight: 800;
-            color: var(--text-white); /* Changed to white */
-            text-shadow: 0 4px 15px rgba(77, 166, 255, 0.5);
-            letter-spacing: -0.5px;
-            animation: fadeIn 1.5s ease-out 0.3s both;
-            margin-bottom: 10px;
-            position: relative;
-        }
-        
-        .logo-text::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 200px;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
-            animation: expandWidth 1.5s ease-out 1s both;
-        }
-        
-        .tagline {
-            font-size: 1.6rem;
-            color: var(--text-light);
-            margin-top: 15px;
-            font-weight: 500;
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.5;
-            animation: fadeIn 1.5s ease-out 0.5s both;
-            background: rgba(15, 25, 45, 0.6);
-            padding: 20px 30px;
-            border-radius: 12px;
-            border-left: 4px solid var(--primary-color);
-        }
-        
         .vision-section {
             margin: 80px 0;
+            padding: 80px 0;
+            border-radius: 0;
         }
         
         .section-title {
@@ -143,7 +183,6 @@
             text-align: center;
             position: relative;
             font-weight: 700;
-            animation: fadeInUp 1s ease-out 0.8s both;
         }
         
         .section-title::after {
@@ -154,8 +193,7 @@
             transform: translateX(-50%);
             width: 120px;
             height: 4px;
-            background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
-            animation: expandWidth 1.5s ease-out 1.2s both;
+            background: linear-gradient(90deg, transparent, #0096FF, transparent);
         }
         
         .vision-content {
@@ -171,30 +209,23 @@
             gap: 25px;
             padding: 30px;
             transition: all 0.4s ease;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease-out forwards;
-            background: var(--card-bg);
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 16px;
-            border: 1px solid rgba(77, 166, 255, 0.2);
+            border: 1px solid rgba(0, 150, 255, 0.2);
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
         }
         
-        .vision-point:nth-child(1) { animation-delay: 1s; }
-        .vision-point:nth-child(2) { animation-delay: 1.2s; }
-        .vision-point:nth-child(3) { animation-delay: 1.4s; }
-        .vision-point:nth-child(4) { animation-delay: 1.6s; }
-        
         .vision-point:hover {
             transform: translateY(-8px);
-            border-color: rgba(77, 166, 255, 0.4);
-            box-shadow: 0 12px 40px rgba(77, 166, 255, 0.2);
+            border-color: rgba(0, 150, 255, 0.4);
+            box-shadow: 0 12px 40px rgba(0, 150, 255, 0.2);
         }
         
         .vision-icon {
             width: 70px;
             height: 70px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            background: linear-gradient(135deg, #0096FF, #0077cc);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -202,12 +233,12 @@
             font-size: 2rem;
             flex-shrink: 0;
             transition: all 0.4s ease;
-            box-shadow: 0 5px 15px rgba(77, 166, 255, 0.4);
+            box-shadow: 0 5px 15px rgba(0, 150, 255, 0.4);
         }
         
         .vision-point:hover .vision-icon {
             transform: scale(1.15) rotate(5deg);
-            box-shadow: 0 8px 25px rgba(77, 166, 255, 0.6);
+            box-shadow: 0 8px 25px rgba(0, 150, 255, 0.6);
         }
         
         .vision-text {
@@ -231,8 +262,6 @@
         .meaning-section {
             margin: 100px 0;
             text-align: center;
-            opacity: 0;
-            animation: fadeIn 1s ease-out 1.8s both;
         }
         
         .meaning-title {
@@ -257,40 +286,21 @@
             max-width: 900px;
             margin: 0 auto;
             text-align: left;
-            background: var(--card-bg);
+            background: rgba(255, 255, 255, 0.05);
             padding: 40px;
             border-radius: 16px;
-            border: 1px solid rgba(77, 166, 255, 0.2);
+            border: 1px solid rgba(0, 150, 255, 0.2);
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
         }
         
         .highlight {
-            color: var(--primary-light);
+            color: #0096FF;
             font-weight: 600;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .highlight::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary-color), transparent);
-            transition: width 0.5s ease;
-        }
-        
-        .meaning-content:hover .highlight::after {
-            width: 100%;
         }
         
         .demo-link-section {
             margin: 100px 0;
             text-align: center;
-            opacity: 0;
-            animation: fadeIn 1s ease-out 2.2s both;
         }
         
         .demo-title {
@@ -313,7 +323,7 @@
         .demo-btn {
             display: inline-block;
             padding: 22px 55px;
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            background: linear-gradient(135deg, #0096FF, #0077cc);
             color: var(--text-white);
             border: none;
             border-radius: 50px;
@@ -322,30 +332,15 @@
             cursor: pointer;
             transition: all 0.4s ease;
             text-decoration: none;
-            box-shadow: 0 8px 25px rgba(77, 166, 255, 0.4);
+            box-shadow: 0 8px 25px rgba(0, 150, 255, 0.4);
             position: relative;
             overflow: hidden;
             letter-spacing: 0.5px;
         }
         
-        .demo-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.6s;
-        }
-        
-        .demo-btn:hover::before {
-            left: 100%;
-        }
-        
         .demo-btn:hover {
             transform: translateY(-7px);
-            box-shadow: 0 15px 35px rgba(77, 166, 255, 0.5);
+            box-shadow: 0 15px 35px rgba(0, 150, 255, 0.5);
         }
         
         .demo-btn i {
@@ -364,43 +359,15 @@
             color: var(--text-muted);
             font-size: 1.1rem;
             font-weight: 500;
-            border-top: 1px solid rgba(77, 166, 255, 0.2);
-            opacity: 0;
-            animation: fadeIn 1s ease-out 2.6s both;
+            border-top: 1px solid rgba(0, 150, 255, 0.2);
             line-height: 1.6;
         }
         
         /* Animation Keyframes */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes expandWidth {
-            from { width: 0; }
-            to { width: 200px; }
-        }
-        
         @keyframes float {
             0%, 100% { transform: translateY(0) rotate(0); }
-            33% { transform: translateY(-10px) rotate(1deg); }
-            66% { transform: translateY(5px) rotate(-1deg); }
-        }
-        
-        @keyframes glow {
-            0%, 100% { box-shadow: 0 0 5px rgba(77, 166, 255, 0.5); }
-            50% { box-shadow: 0 0 20px rgba(77, 166, 255, 0.8); }
+            33% { transform: translateY(-20px) rotate(2deg); }
+            66% { transform: translateY(10px) rotate(-2deg); }
         }
         
         @media (max-width: 768px) {
@@ -408,21 +375,36 @@
                 font-size: 16px;
             }
             
-            .content-wrapper {
+            .header {
+                padding: 15px 20px;
+            }
+            
+            .logo {
+                font-size: 1.8rem;
+            }
+            
+            .hero-section {
+                margin-top: 60px;
+                min-height: 60vh;
                 padding: 40px 20px;
             }
             
-            .logo-text {
-                font-size: 3.2rem;
-            }
-            
-            .logo-text::after {
-                width: 150px;
-            }
-            
             .tagline {
-                font-size: 1.3rem;
-                padding: 15px 20px;
+                font-size: 2.2rem;
+                padding: 0 10px;
+            }
+            
+            .tagline-subtext {
+                font-size: 1.2rem;
+                padding: 0 10px;
+            }
+            
+            .bubble {
+                display: none; /* Hide bubbles on mobile for better performance */
+            }
+            
+            .content-wrapper {
+                padding: 40px 20px;
             }
             
             .section-title {
@@ -459,17 +441,32 @@
     </style>
 </head>
 <body>
-    <!-- Background pattern with connecting lines -->
-    <div class="background-pattern" id="backgroundPattern"></div>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">PragnaAI</div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <!-- Transparent Bubbles -->
+        <div class="bubble bubble-1"></div>
+        <div class="bubble bubble-2"></div>
+        <div class="bubble bubble-3"></div>
+        <div class="bubble bubble-4"></div>
+        <div class="bubble bubble-5"></div>
+        <div class="bubble bubble-6"></div>
+        
+        <div class="hero-content">
+            <div class="tagline-container">
+                <h1 class="tagline">Intelligence that perceives diseases before they manifest</h1>
+                <p class="tagline-subtext">Harnessing the power of AI and molecular analysis to detect cancer at its earliest stages, transforming the future of diagnostics.</p>
+            </div>
+        </div>
+    </section>
     
     <div class="content-wrapper">
-        <header>
-            <div class="logo">
-                <div class="logo-text">PragnaAI Research</div>
-            </div>
-            <div class="tagline">"Intelligence that perceives diseases before they manifest"</div>
-        </header>
-        
         <section class="vision-section">
             <h2 class="section-title">Vision of Early Cancer Diagnosis</h2>
             
@@ -538,88 +535,5 @@
         PragnaAI Research & Development<br>
         © 2025 PragnaAI - Transforming Early Cancer Detection
     </div>
-
-    <script>
-        // Create background pattern with connecting lines
-        document.addEventListener('DOMContentLoaded', function() {
-            const pattern = document.getElementById('backgroundPattern');
-            const dots = [];
-            const lines = [];
-            
-            // Create dots
-            for (let i = 0; i < 70; i++) {
-                const dot = document.createElement('div');
-                dot.className = 'dot';
-                
-                // Random position
-                const left = Math.random() * 100;
-                const top = Math.random() * 100;
-                
-                dot.style.left = `${left}%`;
-                dot.style.top = `${top}%`;
-                
-                // Random size variation
-                const size = 4 + Math.random() * 6;
-                dot.style.width = `${size}px`;
-                dot.style.height = `${size}px`;
-                
-                // Random opacity
-                dot.style.opacity = 0.4 + Math.random() * 0.5;
-                
-                // Random animation delay for floating effect
-                dot.style.animationDelay = `${Math.random() * 10}s`;
-                dot.style.animationDuration = `${8 + Math.random() * 8}s`;
-                
-                pattern.appendChild(dot);
-                dots.push({
-                    element: dot,
-                    x: left,
-                    y: top
-                });
-            }
-            
-            // Create connecting lines between nearby dots
-            for (let i = 0; i < dots.length; i++) {
-                for (let j = i + 1; j < dots.length; j++) {
-                    const dot1 = dots[i];
-                    const dot2 = dots[j];
-                    
-                    // Calculate distance between dots
-                    const dx = dot1.x - dot2.x;
-                    const dy = dot1.y - dot2.y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    
-                    // Only connect dots that are close to each other
-                    if (distance < 20) {
-                        const line = document.createElement('div');
-                        line.className = 'line';
-                        
-                        // Calculate line properties
-                        const angle = Math.atan2(dy, dx) * 180 / Math.PI;
-                        const length = distance;
-                        
-                        line.style.width = `${length}%`;
-                        line.style.height = '1.5px';
-                        line.style.left = `${dot1.x}%`;
-                        line.style.top = `${dot1.y}%`;
-                        line.style.transform = `rotate(${angle}deg)`;
-                        line.style.opacity = 0.15 + (0.3 * (1 - distance/20));
-                        
-                        pattern.appendChild(line);
-                        lines.push(line);
-                    }
-                }
-            }
-            
-            // Add subtle animation to lines
-            setInterval(() => {
-                lines.forEach(line => {
-                    const currentOpacity = parseFloat(line.style.opacity);
-                    const newOpacity = currentOpacity * (0.7 + Math.random() * 0.6);
-                    line.style.opacity = newOpacity;
-                });
-            }, 3000);
-        });
-    </script>
 </body>
 </html>

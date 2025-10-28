@@ -24,6 +24,7 @@
             --black: #000000;
             --dark-blue: #0a1931;
             --card-bg: rgba(15, 25, 45, 0.7);
+            --about-bg: #050c1a;
         }
         
         body {
@@ -60,6 +61,41 @@
             font-weight: 700;
             color: #0096FF;
             letter-spacing: -0.5px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-link {
+            color: var(--text-white);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-blue);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-link.active {
+            color: var(--primary-blue);
+        }
+        
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 16px;
+            right: 16px;
+            height: 2px;
+            background-color: var(--primary-blue);
         }
         
         /* Hero Section */
@@ -323,24 +359,23 @@
         .demo-btn {
             display: inline-block;
             padding: 22px 55px;
-            background: linear-gradient(135deg, #0096FF, #0077cc);
+            background: #0096FF;
             color: var(--text-white);
             border: none;
-            border-radius: 50px;
+            border-radius: 8px;
             font-size: 1.4rem;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
             text-decoration: none;
-            box-shadow: 0 8px 25px rgba(0, 150, 255, 0.4);
             position: relative;
             overflow: hidden;
             letter-spacing: 0.5px;
         }
         
         .demo-btn:hover {
-            transform: translateY(-7px);
-            box-shadow: 0 15px 35px rgba(0, 150, 255, 0.5);
+            background: #0077cc;
+            transform: translateY(-3px);
         }
         
         .demo-btn i {
@@ -362,6 +397,161 @@
             border-top: 1px solid rgba(0, 150, 255, 0.2);
             line-height: 1.6;
         }
+
+        /* About Section Styles */
+        .about-section {
+            margin: 80px 0;
+            padding: 80px 0;
+            border-radius: 0;
+            background: var(--about-bg);
+            position: relative;
+        }
+
+        .about-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #0096FF, transparent);
+        }
+
+        .about-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #0096FF, transparent);
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .about-text-block {
+            margin-bottom: 50px;
+            padding: 30px;
+            background: rgba(5, 15, 30, 0.8);
+            border-left: 4px solid #0096FF;
+            border-radius: 0 8px 8px 0;
+            transition: all 0.3s ease;
+        }
+
+        .about-text-block:hover {
+            background: rgba(5, 15, 30, 0.9);
+            transform: translateX(10px);
+        }
+
+        .about-text-block h3 {
+            font-size: 1.8rem;
+            color: var(--text-white);
+            margin-bottom: 20px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .about-text-block p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .research-section {
+            margin: 100px 0;
+            text-align: center;
+        }
+
+        .research-title {
+            font-size: 2.8rem;
+            margin-bottom: 30px;
+            font-weight: 700;
+            color: var(--text-white);
+        }
+
+        .research-content {
+            font-size: 1.3rem;
+            margin-bottom: 50px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+            color: var(--text-muted);
+            text-align: left;
+            background: rgba(5, 15, 30, 0.8);
+            padding: 40px;
+            border-radius: 8px;
+            border-left: 4px solid #0096FF;
+        }
+
+        .terms-section {
+            margin: 80px 0;
+        }
+
+        .terms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .term-card {
+            background: rgba(5, 15, 30, 0.8);
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 4px solid #0096FF;
+            transition: all 0.3s ease;
+        }
+
+        .term-card:hover {
+            background: rgba(5, 15, 30, 0.9);
+            transform: translateY(-5px);
+        }
+
+        .term-card h3 {
+            font-size: 1.5rem;
+            color: var(--text-white);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .term-card p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background: transparent;
+            color: var(--text-white);
+            border: 2px solid var(--primary-blue);
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            margin-top: 40px;
+        }
+
+        .back-btn:hover {
+            background: var(--primary-blue);
+            transform: translateY(-3px);
+        }
+
+        /* Hidden class for page switching */
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
         
         /* Animation Keyframes */
         @keyframes float {
@@ -381,6 +571,15 @@
             
             .logo {
                 font-size: 1.8rem;
+            }
+            
+            .nav-links {
+                gap: 15px;
+            }
+            
+            .nav-link {
+                font-size: 1rem;
+                padding: 6px 12px;
             }
             
             .hero-section {
@@ -437,6 +636,31 @@
             .demo-title {
                 font-size: 2.2rem;
             }
+
+            .about-text-block {
+                padding: 20px;
+            }
+
+            .about-text-block h3 {
+                font-size: 1.5rem;
+            }
+
+            .about-text-block p {
+                font-size: 1.1rem;
+            }
+
+            .research-title {
+                font-size: 2.2rem;
+            }
+
+            .research-content {
+                font-size: 1.1rem;
+                padding: 25px;
+            }
+
+            .terms-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -445,95 +669,206 @@
     <header class="header">
         <div class="header-content">
             <div class="logo">PragnaAI</div>
+            <div class="nav-links">
+                <a href="#" class="nav-link active" data-page="home">Home</a>
+                <a href="#" class="nav-link" data-page="about">About</a>
+            </div>
         </div>
     </header>
     
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <!-- Transparent Bubbles -->
-        <div class="bubble bubble-1"></div>
-        <div class="bubble bubble-2"></div>
-        <div class="bubble bubble-3"></div>
-        <div class="bubble bubble-4"></div>
-        <div class="bubble bubble-5"></div>
-        <div class="bubble bubble-6"></div>
-        
-        <div class="hero-content">
-            <div class="tagline-container">
-                <h1 class="tagline">Intelligence that perceives diseases before they manifest</h1>
-                <p class="tagline-subtext">Harnessing the power of AI and molecular analysis to detect cancer at its earliest stages, transforming the future of diagnostics.</p>
-            </div>
-        </div>
-    </section>
-    
-    <div class="content-wrapper">
-        <section class="vision-section">
-            <h2 class="section-title">Vision of Early Cancer Diagnosis</h2>
+    <!-- Home Page -->
+    <div id="home-page" class="page active">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <!-- Transparent Bubbles -->
+            <div class="bubble bubble-1"></div>
+            <div class="bubble bubble-2"></div>
+            <div class="bubble bubble-3"></div>
+            <div class="bubble bubble-4"></div>
+            <div class="bubble bubble-5"></div>
+            <div class="bubble bubble-6"></div>
             
-            <div class="vision-content">
-                <div class="vision-point">
-                    <div class="vision-icon">
-                        <i class="fas fa-microscope"></i>
-                    </div>
-                    <div class="vision-text">
-                        <h3>Revolutionary Detection Technology</h3>
-                        <p>PragnaAI leverages advanced photoacoustic spectroscopy to detect molecular-level changes in lactic acid metabolism, identifying cancer biomarkers long before traditional methods can.</p>
-                    </div>
-                </div>
-                
-                <div class="vision-point">
-                    <div class="vision-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <div class="vision-text">
-                        <h3>AI-Powered Predictive Analysis</h3>
-                        <p>Our multi-agent AI system analyzes molecular vibration patterns in lactic acid, providing accurate cancer probability assessments with interpretable reasoning for medical professionals.</p>
-                    </div>
-                </div>
-                
-                <div class="vision-point">
-                    <div class="vision-icon">
-                        <i class="fas fa-heartbeat"></i>
-                    </div>
-                    <div class="vision-text">
-                        <h3>Proactive Healthcare Intervention</h3>
-                        <p>By detecting cancer at its earliest metabolic stages, PragnaAI enables proactive treatment strategies that significantly improve patient outcomes and survival rates.</p>
-                    </div>
-                </div>
-                
-                <div class="vision-point">
-                    <div class="vision-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <div class="vision-text">
-                        <h3>Accessible Cancer Screening</h3>
-                        <p>Our technology aims to make early cancer detection more accessible, affordable, and non-invasive, transforming how we approach preventive healthcare worldwide.</p>
-                    </div>
+            <div class="hero-content">
+                <div class="tagline-container">
+                    <h1 class="tagline">Intelligence that perceives diseases before they manifest</h1>
+                    <p class="tagline-subtext">Harnessing the power of AI and molecular analysis to detect cancer at its earliest stages, transforming the future of diagnostics.</p>
                 </div>
             </div>
         </section>
         
-        <section class="meaning-section">
-            <h2 class="meaning-title">The Meaning of Pragna</h2>
-            <div class="meaning-subtitle">From Sanskrit: प्रज्ञा (Prajñā)</div>
-            <div class="meaning-content">
-                <p><span class="highlight">Pragna</span> embodies the essence of <span class="highlight">transcendent wisdom</span>, <span class="highlight">intuitive understanding</span>, and <span class="highlight">profound insight</span> that goes beyond conventional knowledge.</p>
-                <p>In our context, PragnaAI represents the <span class="highlight">intelligence that perceives what the eyes cannot see</span> - detecting the subtle molecular signatures of disease before they manifest as physical symptoms.</p>
-            </div>
-        </section>
-        
-        <section class="demo-link-section">
-            <h2 class="demo-title">Experience PragnaAI</h2>
-            <p class="demo-description">Explore our interactive prototype demonstrating how PragnaAI analyzes lactic acid molecular vibrations for early cancer detection through AI-powered photoacoustic diagnosis.</p>
-            <a href="https://pragna-ai-bio.github.io/PragnaAI_Web_Software/" class="demo-btn" target="_blank">
-                Launch PragnaAI Demo <i class="fas fa-external-link-alt"></i>
-            </a>
-        </section>
+        <div class="content-wrapper">
+            <section class="vision-section">
+                <h2 class="section-title">Vision of Early Cancer Diagnosis</h2>
+                
+                <div class="vision-content">
+                    <div class="vision-point">
+                        <div class="vision-icon">
+                            <i class="fas fa-microscope"></i>
+                        </div>
+                        <div class="vision-text">
+                            <h3>Revolutionary Detection Technology</h3>
+                            <p>PragnaAI leverages advanced photoacoustic spectroscopy to detect molecular-level changes in lactic acid metabolism, identifying cancer biomarkers long before traditional methods can.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="vision-point">
+                        <div class="vision-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="vision-text">
+                            <h3>AI-Powered Predictive Analysis</h3>
+                            <p>Our multi-agent AI system analyzes molecular vibration patterns in lactic acid, providing accurate cancer probability assessments with interpretable reasoning for medical professionals.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="vision-point">
+                        <div class="vision-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <div class="vision-text">
+                            <h3>Proactive Healthcare Intervention</h3>
+                            <p>By detecting cancer at its earliest metabolic stages, PragnaAI enables proactive treatment strategies that significantly improve patient outcomes and survival rates.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="vision-point">
+                        <div class="vision-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="vision-text">
+                            <h3>Accessible Cancer Screening</h3>
+                            <p>Our technology aims to make early cancer detection more accessible, affordable, and non-invasive, transforming how we approach preventive healthcare worldwide.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="meaning-section">
+                <h2 class="meaning-title">The Meaning of Pragna</h2>
+                <div class="meaning-subtitle">From Sanskrit: प्रज्ञा (Prajñā)</div>
+                <div class="meaning-content">
+                    <p><span class="highlight">Pragna</span> embodies the essence of <span class="highlight">transcendent wisdom</span>, <span class="highlight">intuitive understanding</span>, and <span class="highlight">profound insight</span> that goes beyond conventional knowledge.</p>
+                    <p>In our context, PragnaAI represents the <span class="highlight">intelligence that perceives what the eyes cannot see</span> - detecting the subtle molecular signatures of disease before they manifest as physical symptoms.</p>
+                </div>
+            </section>
+            
+            <section class="demo-link-section">
+                <h2 class="demo-title">Experience PragnaAI</h2>
+                <p class="demo-description">Explore our interactive prototype demonstrating how PragnaAI analyzes lactic acid molecular vibrations for early cancer detection through AI-powered photoacoustic diagnosis.</p>
+                <a href="https://pragna-ai-bio.github.io/PragnaAI_Web_Software/" class="demo-btn" target="_blank">
+                    Launch PragnaAI Demo <i class="fas fa-external-link-alt"></i>
+                </a>
+            </section>
+        </div>
+    </div>
+
+    <!-- About Page -->
+    <div id="about-page" class="page">
+        <div class="content-wrapper">
+            <section class="about-section">
+                <h2 class="section-title">About PragnaAI Research</h2>
+                
+                <div class="about-content">
+                    <div class="about-text-block">
+                        <h3>The Critical Challenge: Late Cancer Diagnosis</h3>
+                        <p>Traditional cancer detection methods often identify malignancies only after significant progression, when treatment options are limited and survival rates decline dramatically. This diagnostic delay represents one of the most significant challenges in modern oncology, affecting millions of patients worldwide each year.</p>
+                    </div>
+                    
+                    <div class="about-text-block">
+                        <h3>Our Pioneering Research Focus</h3>
+                        <p>PragnaAI is revolutionizing cancer detection by focusing on the earliest metabolic alterations in cells, long before physical tumors form. Our research centers on analyzing molecular vibrations in lactic acid - a key biomarker of the Warburg effect, where cancer cells fundamentally alter their metabolism to favor glycolysis even in oxygen-rich environments.</p>
+                    </div>
+                    
+                    <div class="about-text-block">
+                        <h3>Transformative Technology Approach</h3>
+                        <p>We've developed a groundbreaking approach that combines advanced photoacoustic spectroscopy with sophisticated multi-agent AI systems. This enables us to detect subtle molecular changes that precede tumor formation by months or even years, providing an unprecedented window for early intervention and dramatically improved patient outcomes.</p>
+                    </div>
+                    
+                    <div class="about-text-block">
+                        <h3>Potential Impact on Global Healthcare</h3>
+                        <p>By detecting cancer at its metabolic inception rather than its physical manifestation, our technology has the potential to increase 5-year survival rates for many cancer types by 40-60%. This represents a paradigm shift from reactive treatment to proactive prevention, potentially transforming cancer from a life-threatening disease to a manageable condition.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="research-section">
+                <h2 class="research-title">Scientific Foundation</h2>
+                <div class="research-content">
+                    <p>Our research builds upon the established scientific principle that cancer cells undergo metabolic reprogramming known as the Warburg effect. This phenomenon causes malignant cells to consume glucose at an accelerated rate and produce excessive lactic acid, even in the presence of oxygen.</p>
+                    <p>PragnaAI's innovation lies in detecting these metabolic changes through the analysis of <span class="highlight">lactic acid molecular vibrations</span> using advanced photoacoustic spectroscopy. Each molecule vibrates at characteristic frequencies that serve as unique fingerprints, allowing precise identification and quantification.</p>
+                    <p>Our multi-agent AI system then interprets these molecular signatures, distinguishing between normal metabolic activity and the distinctive patterns associated with early-stage carcinogenesis. This approach enables detection at the molecular level, providing a critical lead time that traditional imaging and biopsy methods cannot match.</p>
+                </div>
+            </section>
+            
+            <section class="terms-section">
+                <h2 class="section-title">Core Scientific Concepts</h2>
+                
+                <div class="terms-grid">
+                    <div class="term-card">
+                        <h3>Photoacoustic Spectroscopy</h3>
+                        <p>A sophisticated analytical technique that uses laser pulses to generate ultrasonic waves in molecules, enabling highly specific detection of molecular vibrations and biomarkers with exceptional sensitivity.</p>
+                    </div>
+                    
+                    <div class="term-card">
+                        <h3>Lactic Acid Metabolism</h3>
+                        <p>The biochemical pathway that cancer cells exploit through the Warburg effect, resulting in significantly elevated lactic acid production that serves as a reliable early indicator of malignant transformation.</p>
+                    </div>
+                    
+                    <div class="term-card">
+                        <h3>Molecular Vibrations</h3>
+                        <p>Distinctive vibrational patterns unique to each molecular structure, functioning as precise fingerprints that enable accurate identification of specific compounds through advanced spectroscopic analysis.</p>
+                    </div>
+                    
+                    <div class="term-card">
+                        <h3>Multi-Agent AI System</h3>
+                        <p>Our specialized artificial intelligence architecture where multiple AI agents collaboratively analyze different aspects of molecular data, providing comprehensive diagnostic assessments with transparent reasoning.</p>
+                    </div>
+                    
+                    <div class="term-card">
+                        <h3>Early Metabolic Detection</h3>
+                        <p>The paradigm-shifting approach of identifying cancer through fundamental changes in cellular metabolism rather than waiting for physical tumor growth, enabling intervention at the earliest possible stage.</p>
+                    </div>
+                    
+                    <div class="term-card">
+                        <h3>Warburg Effect</h3>
+                        <p>A fundamental characteristic of cancer cells where they preferentially produce energy through glycolysis followed by lactic acid fermentation, even when oxygen is abundantly available.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
     </div>
     
     <div class="footer-text">
         PragnaAI Research & Development<br>
         © 2025 PragnaAI - Transforming Early Cancer Detection
     </div>
+
+    <script>
+        // Simple page navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pages = document.querySelectorAll('.page');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all links and pages
+                    navLinks.forEach(nav => nav.classList.remove('active'));
+                    pages.forEach(page => page.classList.remove('active'));
+                    
+                    // Add active class to clicked link
+                    this.classList.add('active');
+                    
+                    // Show the corresponding page
+                    const pageId = this.getAttribute('data-page') + '-page';
+                    document.getElementById(pageId).classList.add('active');
+                    
+                    // Scroll to top when switching pages
+                    window.scrollTo(0, 0);
+                });
+            });
+        });
+    </script>
 </body>
 </html>

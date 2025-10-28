@@ -460,6 +460,171 @@
             line-height: 1.7;
         }
 
+        /* Photoacoustic Section Styles */
+        .photoacoustic-section {
+            margin: 80px 0;
+            padding: 80px 0;
+            border-radius: 0;
+            background: var(--about-bg);
+            position: relative;
+        }
+
+        .photoacoustic-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #0096FF, transparent);
+        }
+
+        .photoacoustic-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #0096FF, transparent);
+        }
+
+        .photoacoustic-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .principle-container {
+            margin-bottom: 50px;
+            padding: 30px;
+            background: rgba(5, 15, 30, 0.8);
+            border-left: 4px solid #0096FF;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .principle-container h3 {
+            font-size: 1.8rem;
+            color: var(--text-white);
+            margin-bottom: 20px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .principle-container p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .schematic-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .schematic-card {
+            background: rgba(5, 15, 30, 0.8);
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 4px solid #0096FF;
+            transition: all 0.3s ease;
+        }
+
+        .schematic-card:hover {
+            background: rgba(5, 15, 30, 0.9);
+            transform: translateY(-5px);
+        }
+
+        .schematic-card h3 {
+            font-size: 1.5rem;
+            color: var(--text-white);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .schematic-card p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .schematic-img {
+            width: 100%;
+            height: 300px;
+            background: rgba(0, 150, 255, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            border: 1px dashed rgba(0, 150, 255, 0.3);
+        }
+
+        .experimental-setup {
+            margin-top: 60px;
+        }
+
+        .setup-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .setup-item {
+            background: rgba(5, 15, 30, 0.8);
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #0096FF;
+            transition: all 0.3s ease;
+        }
+
+        .setup-item:hover {
+            background: rgba(5, 15, 30, 0.9);
+            transform: translateY(-5px);
+        }
+
+        .setup-item h4 {
+            font-size: 1.3rem;
+            color: var(--text-white);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .setup-item p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .results-container {
+            margin-top: 60px;
+            padding: 30px;
+            background: rgba(5, 15, 30, 0.8);
+            border-left: 4px solid #0096FF;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .results-container h3 {
+            font-size: 1.8rem;
+            color: var(--text-white);
+            margin-bottom: 20px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .results-container p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
         .research-section {
             margin: 100px 0;
             text-align: center;
@@ -649,6 +814,26 @@
                 font-size: 1.1rem;
             }
 
+            .photoacoustic-section {
+                padding: 40px 0;
+            }
+
+            .schematic-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .schematic-card {
+                padding: 20px;
+            }
+
+            .schematic-img {
+                height: 200px;
+            }
+
+            .setup-grid {
+                grid-template-columns: 1fr;
+            }
+
             .research-title {
                 font-size: 2.2rem;
             }
@@ -672,6 +857,7 @@
             <div class="nav-links">
                 <a href="#" class="nav-link active" data-page="home">Home</a>
                 <a href="#" class="nav-link" data-page="about">About</a>
+                <a href="#" class="nav-link" data-page="photoacoustic">Photoacoustic</a>
             </div>
         </div>
     </header>
@@ -832,6 +1018,63 @@
                     <div class="term-card">
                         <h3>Warburg Effect</h3>
                         <p>A fundamental characteristic of cancer cells where they preferentially produce energy through glycolysis followed by lactic acid fermentation, even when oxygen is abundantly available.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Photoacoustic Spectroscopy Page -->
+    <div id="photoacoustic-page" class="page">
+        <div class="content-wrapper">
+            <section class="photoacoustic-section">
+                <h2 class="section-title">Photoacoustic Spectroscopy Technology</h2>
+                
+                <div class="photoacoustic-content">
+                    <div class="principle-container">
+                        <h3>Principle of PAPEORS (Photoacoustic Polarimetric Optical Rotation Spectroscopy)</h3>
+                        <p>PAPEORS represents a groundbreaking advancement in molecular detection technology, combining the sensitivity of photoacoustic spectroscopy with the specificity of polarimetric optical rotation measurements. This dual approach enables unprecedented detection of chiral molecules like lactic acid at extremely low concentrations.</p>
+                        <p>Our implementation of PAPEORS technology allows for the detection of subtle molecular changes associated with early-stage cancer metabolism, providing a non-invasive diagnostic tool with exceptional sensitivity and specificity.</p>
+                    </div>
+                    
+                    <div class="schematic-grid">
+                        <div class="schematic-card">
+                            <h3>Concept and Applications</h3>
+                            <p>The PAPEORS concept leverages the unique interaction between polarized light and chiral molecules to detect subtle molecular changes. This technology has diverse applications in medical diagnostics, particularly for detecting cancer biomarkers like lactic acid through their distinctive optical rotation signatures.</p>
+                        </div>
+                        
+                        <div class="schematic-card">
+                            <h3>Experimental Setup</h3>
+                            <p>The experimental configuration for optical rotation measurements includes precision optical components: an aperture for beam diameter control, dichroic mirrors, Glan-Taylor crystal polarizers, quarter-wave plates, and broadband mirrors. An energy meter ensures real-time energy measurements for consistent experimental conditions.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="experimental-setup">
+                        <h3 class="section-title">Experimental Components</h3>
+                        
+                        <div class="setup-grid">
+                            <div class="setup-item">
+                                <h4>Optical Alignment System</h4>
+                                <p>Precision optical components including an aperture of diameter 6 mm to reduce beam diameter, ensuring optimal alignment for accurate polarization measurements.</p>
+                            </div>
+                            
+                            <div class="setup-item">
+                                <h4>Polarization Generation</h4>
+                                <p>Key components: DMLP (long pass dichroic mirror), GTC (Glan-Taylor crystal polarizer), QWP (quarter-wave plate), and broadband mirrors (BBM1 and BBM2) for precise polarization control.</p>
+                            </div>
+                            
+                            <div class="setup-item">
+                                <h4>Energy Monitoring</h4>
+                                <p>Real-time energy measurements aligned with DMLP ensure consistent experimental conditions and reliable data acquisition throughout the measurement process.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="results-container">
+                        <h3>Experimental Results and Analysis</h3>
+                        <p>Our photoacoustic measurements demonstrate distinct signal characteristics for different sample types and polarizations. The acquired PA signals for aqueous and BSA glucose solutions show varying signal-to-noise ratios (SNR) for vertical (V), parallel (P), and radial (R) incidences.</p>
+                        <p>For both sample types at 350 mg/dl concentration, the R incidence consistently demonstrates superior SNR compared to V and P incidences, highlighting the enhanced detection capability of radial polarization in photoacoustic measurements.</p>
+                        <p>Optical rotation analysis at a depth of 2 mm from the PA experiments for V incidence reveals concentration-dependent rotation patterns. These measurements show distinct optical rotation as a function of concentration for both aqueous glucose samples and serum-based samples, validating the sensitivity of our approach for detecting molecular changes relevant to cancer metabolism.</p>
                     </div>
                 </div>
             </section>

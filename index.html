@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PragnaAI - Early Cancer Diagnosis Vision</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -14,21 +15,24 @@
         }
         
         :root {
-            --primary-blue: #0096FF;
-            --primary-dark: #0a1931;
-            --accent-color: #2ecc71;
+            --primary-yellow: #FFD700;
+            --primary-green: #90EE90;
+            --accent-color: #32CD32;
             --text-white: #ffffff;
-            --text-light: #e6f2ff;
-            --text-muted: #a8c6e6;
+            --text-light: #f5f5f5;
+            --text-muted: #b0b0b0;
             --white: #ffffff;
             --black: #000000;
-            --dark-blue: #0a1931;
-            --card-bg: rgba(15, 25, 45, 0.7);
-            --about-bg: #050c1a;
+            --dark-bg: #0a0a0a;
+            --card-bg: rgba(30, 30, 30, 0.9);
+            --about-bg: #111111;
+            --logo-blue: #0096FF;
+            --hero-bg: #f8f9fa;
+            --hero-text: #333333;
         }
         
         body {
-            background: var(--dark-blue);
+            background: var(--dark-bg);
             color: var(--text-light);
             line-height: 1.7;
             min-height: 100vh;
@@ -45,7 +49,8 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
         }
         
         .header-content {
@@ -59,7 +64,7 @@
         .logo {
             font-size: 2.2rem;
             font-weight: 700;
-            color: #0096FF;
+            color: var(--logo-blue);
             letter-spacing: -0.5px;
         }
         
@@ -80,12 +85,12 @@
         }
         
         .nav-link:hover {
-            color: var(--primary-blue);
-            background: rgba(255, 255, 255, 0.1);
+            color: var(--primary-yellow);
+            background: rgba(255, 255, 255, 0.05);
         }
         
         .nav-link.active {
-            color: var(--primary-blue);
+            color: var(--primary-yellow);
         }
         
         .nav-link.active::after {
@@ -95,13 +100,62 @@
             left: 16px;
             right: 16px;
             height: 2px;
-            background-color: var(--primary-blue);
+            background-color: var(--primary-yellow);
         }
         
-        /* Hero Section */
+        /* Mobile Menu Styles */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-white);
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 5px;
+            z-index: 1001;
+        }
+        
+        .mobile-nav-links {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: var(--black);
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
+            z-index: 999;
+        }
+        
+        .mobile-nav-links.active {
+            display: flex;
+        }
+        
+        .mobile-nav-link {
+            color: var(--text-white);
+            text-decoration: none;
+            padding: 15px 20px;
+            font-size: 1.1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-nav-link:last-child {
+            border-bottom: none;
+        }
+        
+        .mobile-nav-link:hover,
+        .mobile-nav-link.active {
+            color: var(--primary-yellow);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        /* Hero Section - Modified to match the image */
         .hero-section {
-            background-color: var(--white);
-            min-height: 70vh;
+            background: #ffffff;
+            min-height: 60vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -109,6 +163,7 @@
             overflow: hidden;
             margin-top: 80px;
             padding: 60px 20px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         }
         
         .hero-content {
@@ -117,85 +172,48 @@
             padding: 0 40px;
             z-index: 2;
             position: relative;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
         
         .tagline-container {
             margin-bottom: 40px;
+            width: 100%;
         }
         
         .tagline {
-            font-size: 3.2rem;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 0;
+            padding: 0;
+            color: #000000;
+            text-align: center;
+            width: 100%;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+        
+        .tagline-emphasis {
             font-weight: 700;
-            line-height: 1.3;
-            margin-bottom: 30px;
-            color: #333;
-            padding: 0 20px;
+            color: #0096FF;
+            position: relative;
+            display: inline-block;
         }
         
-        .tagline-subtext {
-            font-size: 1.5rem;
-            color: #666;
-            max-width: 700px;
-            margin: 0 auto;
-            line-height: 1.6;
-            padding: 0 20px;
-        }
-        
-        /* Transparent Bubbles */
-        .bubble {
+        .tagline-emphasis::after {
+            content: '';
             position: absolute;
-            border-radius: 50%;
-            background: rgba(0, 150, 255, 0.1);
-            border: 1px solid rgba(0, 150, 255, 0.2);
-            animation: float 15s ease-in-out infinite;
-        }
-        
-        .bubble-1 {
-            width: 120px;
-            height: 120px;
-            top: 15%;
-            left: 10%;
-            animation-delay: 0s;
-        }
-        
-        .bubble-2 {
-            width: 80px;
-            height: 80px;
-            top: 25%;
-            right: 15%;
-            animation-delay: 2s;
-        }
-        
-        .bubble-3 {
-            width: 150px;
-            height: 150px;
-            bottom: 20%;
-            left: 15%;
-            animation-delay: 4s;
-        }
-        
-        .bubble-4 {
-            width: 100px;
-            height: 100px;
-            bottom: 15%;
-            right: 10%;
-            animation-delay: 6s;
-        }
-        
-        .bubble-5 {
-            width: 60px;
-            height: 60px;
-            top: 40%;
-            left: 5%;
-            animation-delay: 1s;
-        }
-        
-        .bubble-6 {
-            width: 90px;
-            height: 90px;
-            top: 60%;
-            right: 8%;
-            animation-delay: 3s;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary-yellow), transparent);
+            border-radius: 2px;
         }
         
         .content-wrapper {
@@ -206,10 +224,12 @@
             z-index: 1;
         }
         
+        /* Vision Section - Now directly below hero */
         .vision-section {
-            margin: 80px 0;
+            margin: 0;
             padding: 80px 0;
             border-radius: 0;
+            background: var(--dark-bg);
         }
         
         .section-title {
@@ -229,7 +249,7 @@
             transform: translateX(-50%);
             width: 120px;
             height: 4px;
-            background: linear-gradient(90deg, transparent, #0096FF, transparent);
+            background: linear-gradient(90deg, transparent, var(--primary-yellow), transparent);
         }
         
         .vision-content {
@@ -245,36 +265,36 @@
             gap: 25px;
             padding: 30px;
             transition: all 0.4s ease;
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--card-bg);
             border-radius: 16px;
-            border: 1px solid rgba(0, 150, 255, 0.2);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
         }
         
         .vision-point:hover {
             transform: translateY(-8px);
-            border-color: rgba(0, 150, 255, 0.4);
-            box-shadow: 0 12px 40px rgba(0, 150, 255, 0.2);
+            border-color: rgba(255, 215, 0, 0.4);
+            box-shadow: 0 12px 40px rgba(255, 215, 0, 0.2);
         }
         
         .vision-icon {
             width: 70px;
             height: 70px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #0096FF, #0077cc);
+            background: linear-gradient(135deg, var(--primary-yellow), #FFA500);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--white);
+            color: var(--black);
             font-size: 2rem;
             flex-shrink: 0;
             transition: all 0.4s ease;
-            box-shadow: 0 5px 15px rgba(0, 150, 255, 0.4);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
         }
         
         .vision-point:hover .vision-icon {
             transform: scale(1.15) rotate(5deg);
-            box-shadow: 0 8px 25px rgba(0, 150, 255, 0.6);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
         }
         
         .vision-text {
@@ -322,15 +342,15 @@
             max-width: 900px;
             margin: 0 auto;
             text-align: left;
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--card-bg);
             padding: 40px;
             border-radius: 16px;
-            border: 1px solid rgba(0, 150, 255, 0.2);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
         }
         
         .highlight {
-            color: #0096FF;
+            color: var(--primary-yellow);
             font-weight: 600;
         }
         
@@ -359,8 +379,8 @@
         .demo-btn {
             display: inline-block;
             padding: 22px 55px;
-            background: #0096FF;
-            color: var(--text-white);
+            background: var(--primary-yellow);
+            color: #333;
             border: none;
             border-radius: 8px;
             font-size: 1.4rem;
@@ -371,11 +391,13 @@
             position: relative;
             overflow: hidden;
             letter-spacing: 0.5px;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
         }
         
         .demo-btn:hover {
-            background: #0077cc;
+            background: #FFA500;
             transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
         }
         
         .demo-btn i {
@@ -394,7 +416,7 @@
             color: var(--text-muted);
             font-size: 1.1rem;
             font-weight: 500;
-            border-top: 1px solid rgba(0, 150, 255, 0.2);
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
             line-height: 1.6;
         }
 
@@ -405,6 +427,8 @@
             border-radius: 0;
             background: var(--about-bg);
             position: relative;
+            border-top: 1px solid rgba(255, 215, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.1);
         }
 
         .about-section::before {
@@ -414,7 +438,7 @@
             left: 0;
             right: 0;
             height: 1px;
-            background: linear-gradient(90deg, transparent, #0096FF, transparent);
+            background: linear-gradient(90deg, transparent, var(--primary-yellow), transparent);
         }
 
         .about-section::after {
@@ -424,7 +448,7 @@
             left: 0;
             right: 0;
             height: 1px;
-            background: linear-gradient(90deg, transparent, #0096FF, transparent);
+            background: linear-gradient(90deg, transparent, var(--primary-yellow), transparent);
         }
 
         .about-content {
@@ -435,14 +459,14 @@
         .about-text-block {
             margin-bottom: 50px;
             padding: 30px;
-            background: rgba(5, 15, 30, 0.8);
-            border-left: 4px solid #0096FF;
+            background: rgba(20, 20, 20, 0.8);
+            border-left: 4px solid var(--primary-yellow);
             border-radius: 0 8px 8px 0;
             transition: all 0.3s ease;
         }
 
         .about-text-block:hover {
-            background: rgba(5, 15, 30, 0.9);
+            background: rgba(25, 25, 25, 0.9);
             transform: translateX(10px);
         }
 
@@ -458,171 +482,6 @@
             font-size: 1.2rem;
             color: var(--text-muted);
             line-height: 1.7;
-        }
-
-        /* Photoacoustic Section Styles */
-        .photoacoustic-section {
-            margin: 80px 0;
-            padding: 80px 0;
-            border-radius: 0;
-            background: var(--about-bg);
-            position: relative;
-        }
-
-        .photoacoustic-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #0096FF, transparent);
-        }
-
-        .photoacoustic-section::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #0096FF, transparent);
-        }
-
-        .photoacoustic-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .principle-container {
-            margin-bottom: 50px;
-            padding: 30px;
-            background: rgba(5, 15, 30, 0.8);
-            border-left: 4px solid #0096FF;
-            border-radius: 0 8px 8px 0;
-        }
-
-        .principle-container h3 {
-            font-size: 1.8rem;
-            color: var(--text-white);
-            margin-bottom: 20px;
-            font-weight: 600;
-            line-height: 1.3;
-        }
-
-        .principle-container p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            line-height: 1.7;
-            margin-bottom: 20px;
-        }
-
-        .schematic-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-            gap: 40px;
-            margin-top: 50px;
-        }
-
-        .schematic-card {
-            background: rgba(5, 15, 30, 0.8);
-            padding: 30px;
-            border-radius: 8px;
-            border-left: 4px solid #0096FF;
-            transition: all 0.3s ease;
-        }
-
-        .schematic-card:hover {
-            background: rgba(5, 15, 30, 0.9);
-            transform: translateY(-5px);
-        }
-
-        .schematic-card h3 {
-            font-size: 1.5rem;
-            color: var(--text-white);
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .schematic-card p {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .schematic-img {
-            width: 100%;
-            height: 300px;
-            background: rgba(0, 150, 255, 0.1);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            border: 1px dashed rgba(0, 150, 255, 0.3);
-        }
-
-        .experimental-setup {
-            margin-top: 60px;
-        }
-
-        .setup-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .setup-item {
-            background: rgba(5, 15, 30, 0.8);
-            padding: 25px;
-            border-radius: 8px;
-            border-left: 4px solid #0096FF;
-            transition: all 0.3s ease;
-        }
-
-        .setup-item:hover {
-            background: rgba(5, 15, 30, 0.9);
-            transform: translateY(-5px);
-        }
-
-        .setup-item h4 {
-            font-size: 1.3rem;
-            color: var(--text-white);
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .setup-item p {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-
-        .results-container {
-            margin-top: 60px;
-            padding: 30px;
-            background: rgba(5, 15, 30, 0.8);
-            border-left: 4px solid #0096FF;
-            border-radius: 0 8px 8px 0;
-        }
-
-        .results-container h3 {
-            font-size: 1.8rem;
-            color: var(--text-white);
-            margin-bottom: 20px;
-            font-weight: 600;
-            line-height: 1.3;
-        }
-
-        .results-container p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            line-height: 1.7;
-            margin-bottom: 20px;
         }
 
         .research-section {
@@ -646,10 +505,10 @@
             line-height: 1.7;
             color: var(--text-muted);
             text-align: left;
-            background: rgba(5, 15, 30, 0.8);
+            background: rgba(20, 20, 20, 0.8);
             padding: 40px;
             border-radius: 8px;
-            border-left: 4px solid #0096FF;
+            border-left: 4px solid var(--primary-yellow);
         }
 
         .terms-section {
@@ -664,15 +523,15 @@
         }
 
         .term-card {
-            background: rgba(5, 15, 30, 0.8);
+            background: rgba(20, 20, 20, 0.8);
             padding: 30px;
             border-radius: 8px;
-            border-left: 4px solid #0096FF;
+            border-left: 4px solid var(--primary-yellow);
             transition: all 0.3s ease;
         }
 
         .term-card:hover {
-            background: rgba(5, 15, 30, 0.9);
+            background: rgba(25, 25, 25, 0.9);
             transform: translateY(-5px);
         }
 
@@ -694,7 +553,7 @@
             padding: 15px 35px;
             background: transparent;
             color: var(--text-white);
-            border: 2px solid var(--primary-blue);
+            border: 2px solid var(--primary-yellow);
             border-radius: 8px;
             font-size: 1.2rem;
             font-weight: 600;
@@ -705,7 +564,8 @@
         }
 
         .back-btn:hover {
-            background: var(--primary-blue);
+            background: var(--primary-yellow);
+            color: #333;
             transform: translateY(-3px);
         }
 
@@ -718,11 +578,11 @@
             display: block;
         }
         
-        /* Animation Keyframes */
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0); }
-            33% { transform: translateY(-20px) rotate(2deg); }
-            66% { transform: translateY(10px) rotate(-2deg); }
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .vision-content {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            }
         }
         
         @media (max-width: 768px) {
@@ -739,7 +599,11 @@
             }
             
             .nav-links {
-                gap: 15px;
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
             }
             
             .nav-link {
@@ -749,22 +613,13 @@
             
             .hero-section {
                 margin-top: 60px;
-                min-height: 60vh;
+                min-height: 50vh;
                 padding: 40px 20px;
             }
             
+            /* Increased font size for mobile devices */
             .tagline {
-                font-size: 2.2rem;
-                padding: 0 10px;
-            }
-            
-            .tagline-subtext {
-                font-size: 1.2rem;
-                padding: 0 10px;
-            }
-            
-            .bubble {
-                display: none; /* Hide bubbles on mobile for better performance */
+                font-size: 3rem; /* Increased from 2.5rem */
             }
             
             .content-wrapper {
@@ -790,7 +645,14 @@
             }
             
             .vision-point {
+                flex-direction: column;
+                text-align: center;
                 padding: 25px;
+            }
+            
+            .vision-icon {
+                align-self: center;
+                margin-bottom: 20px;
             }
             
             .demo-btn {
@@ -814,26 +676,6 @@
                 font-size: 1.1rem;
             }
 
-            .photoacoustic-section {
-                padding: 40px 0;
-            }
-
-            .schematic-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .schematic-card {
-                padding: 20px;
-            }
-
-            .schematic-img {
-                height: 200px;
-            }
-
-            .setup-grid {
-                grid-template-columns: 1fr;
-            }
-
             .research-title {
                 font-size: 2.2rem;
             }
@@ -846,6 +688,52 @@
             .terms-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .footer-text {
+                padding: 30px 15px;
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .tagline {
+                font-size: 2.5rem; /* Increased from 2rem */
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .meaning-title {
+                font-size: 2rem;
+            }
+            
+            .meaning-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .demo-title {
+                font-size: 1.8rem;
+            }
+            
+            .demo-btn {
+                padding: 15px 30px;
+                font-size: 1.1rem;
+            }
+            
+            .vision-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+            
+            .vision-text h3 {
+                font-size: 1.4rem;
+            }
+            
+            .vision-text p {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
@@ -857,33 +745,35 @@
             <div class="nav-links">
                 <a href="#" class="nav-link active" data-page="home">Home</a>
                 <a href="#" class="nav-link" data-page="about">About</a>
-                <a href="#" class="nav-link" data-page="photoacoustic">Photoacoustic</a>
+                <a href="#" class="nav-link" data-page="demo">Demo</a>
             </div>
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <div class="mobile-nav-links" id="mobile-nav-links">
+            <a href="#" class="mobile-nav-link active" data-page="home">Home</a>
+            <a href="#" class="mobile-nav-link" data-page="about">About</a>
+            <a href="#" class="mobile-nav-link" data-page="demo">Demo</a>
         </div>
     </header>
     
     <!-- Home Page -->
     <div id="home-page" class="page active">
-        <!-- Hero Section -->
+        <!-- Hero Section - Modified to match the image -->
         <section class="hero-section">
-            <!-- Transparent Bubbles -->
-            <div class="bubble bubble-1"></div>
-            <div class="bubble bubble-2"></div>
-            <div class="bubble bubble-3"></div>
-            <div class="bubble bubble-4"></div>
-            <div class="bubble bubble-5"></div>
-            <div class="bubble bubble-6"></div>
-            
             <div class="hero-content">
                 <div class="tagline-container">
-                    <h1 class="tagline">Intelligence that perceives diseases before they manifest</h1>
-                    <p class="tagline-subtext">Harnessing the power of AI and molecular analysis to detect cancer at its earliest stages, transforming the future of diagnostics.</p>
+                    <h1 class="tagline">
+                        "Intelligence that <span class="tagline-emphasis">perceives</span> diseases before it manifests."
+                    </h1>
                 </div>
             </div>
         </section>
         
-        <div class="content-wrapper">
-            <section class="vision-section">
+        <!-- Vision Section - Now directly below hero -->
+        <section class="vision-section">
+            <div class="content-wrapper">
                 <h2 class="section-title">Vision of Early Cancer Diagnosis</h2>
                 
                 <div class="vision-content">
@@ -927,8 +817,10 @@
                         </div>
                     </div>
                 </div>
-            </section>
-            
+            </div>
+        </section>
+        
+        <div class="content-wrapper">
             <section class="meaning-section">
                 <h2 class="meaning-title">The Meaning of Pragna</h2>
                 <div class="meaning-subtitle">From Sanskrit: प्रज्ञा (Prajñā)</div>
@@ -936,14 +828,6 @@
                     <p><span class="highlight">Pragna</span> embodies the essence of <span class="highlight">transcendent wisdom</span>, <span class="highlight">intuitive understanding</span>, and <span class="highlight">profound insight</span> that goes beyond conventional knowledge.</p>
                     <p>In our context, PragnaAI represents the <span class="highlight">intelligence that perceives what the eyes cannot see</span> - detecting the subtle molecular signatures of disease before they manifest as physical symptoms.</p>
                 </div>
-            </section>
-            
-            <section class="demo-link-section">
-                <h2 class="demo-title">Experience PragnaAI</h2>
-                <p class="demo-description">Explore our interactive prototype demonstrating how PragnaAI analyzes lactic acid molecular vibrations for early cancer detection through AI-powered photoacoustic diagnosis.</p>
-                <a href="https://pragna-ai-bio.github.io/PragnaAI_Web_Software/" class="demo-btn" target="_blank">
-                    Launch PragnaAI Demo <i class="fas fa-external-link-alt"></i>
-                </a>
             </section>
         </div>
     </div>
@@ -1023,93 +907,70 @@
             </section>
         </div>
     </div>
-
-    <!-- Photoacoustic Spectroscopy Page -->
-    <div id="photoacoustic-page" class="page">
+    
+    <!-- Demo Page -->
+    <div id="demo-page" class="page">
         <div class="content-wrapper">
-            <section class="photoacoustic-section">
-                <h2 class="section-title">Photoacoustic Spectroscopy Technology</h2>
-                
-                <div class="photoacoustic-content">
-                    <div class="principle-container">
-                        <h3>Principle of PAPEORS (Photoacoustic Polarimetric Optical Rotation Spectroscopy)</h3>
-                        <p>PAPEORS represents a groundbreaking advancement in molecular detection technology, combining the sensitivity of photoacoustic spectroscopy with the specificity of polarimetric optical rotation measurements. This dual approach enables unprecedented detection of chiral molecules like lactic acid at extremely low concentrations.</p>
-                        <p>Our implementation of PAPEORS technology allows for the detection of subtle molecular changes associated with early-stage cancer metabolism, providing a non-invasive diagnostic tool with exceptional sensitivity and specificity.</p>
-                    </div>
-                    
-                    <div class="schematic-grid">
-                        <div class="schematic-card">
-                            <h3>Concept and Applications</h3>
-                            <p>The PAPEORS concept leverages the unique interaction between polarized light and chiral molecules to detect subtle molecular changes. This technology has diverse applications in medical diagnostics, particularly for detecting cancer biomarkers like lactic acid through their distinctive optical rotation signatures.</p>
-                        </div>
-                        
-                        <div class="schematic-card">
-                            <h3>Experimental Setup</h3>
-                            <p>The experimental configuration for optical rotation measurements includes precision optical components: an aperture for beam diameter control, dichroic mirrors, Glan-Taylor crystal polarizers, quarter-wave plates, and broadband mirrors. An energy meter ensures real-time energy measurements for consistent experimental conditions.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="experimental-setup">
-                        <h3 class="section-title">Experimental Components</h3>
-                        
-                        <div class="setup-grid">
-                            <div class="setup-item">
-                                <h4>Optical Alignment System</h4>
-                                <p>Precision optical components including an aperture of diameter 6 mm to reduce beam diameter, ensuring optimal alignment for accurate polarization measurements.</p>
-                            </div>
-                            
-                            <div class="setup-item">
-                                <h4>Polarization Generation</h4>
-                                <p>Key components: DMLP (long pass dichroic mirror), GTC (Glan-Taylor crystal polarizer), QWP (quarter-wave plate), and broadband mirrors (BBM1 and BBM2) for precise polarization control.</p>
-                            </div>
-                            
-                            <div class="setup-item">
-                                <h4>Energy Monitoring</h4>
-                                <p>Real-time energy measurements aligned with DMLP ensure consistent experimental conditions and reliable data acquisition throughout the measurement process.</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="results-container">
-                        <h3>Experimental Results and Analysis</h3>
-                        <p>Our photoacoustic measurements demonstrate distinct signal characteristics for different sample types and polarizations. The acquired PA signals for aqueous and BSA glucose solutions show varying signal-to-noise ratios (SNR) for vertical (V), parallel (P), and radial (R) incidences.</p>
-                        <p>For both sample types at 350 mg/dl concentration, the R incidence consistently demonstrates superior SNR compared to V and P incidences, highlighting the enhanced detection capability of radial polarization in photoacoustic measurements.</p>
-                        <p>Optical rotation analysis at a depth of 2 mm from the PA experiments for V incidence reveals concentration-dependent rotation patterns. These measurements show distinct optical rotation as a function of concentration for both aqueous glucose samples and serum-based samples, validating the sensitivity of our approach for detecting molecular changes relevant to cancer metabolism.</p>
-                    </div>
-                </div>
+            <section class="demo-link-section">
+                <h2 class="demo-title">Experience Our Technology</h2>
+                <p class="demo-description">Explore our interactive prototype demonstrating how PragnaAI analyzes lactic acid molecular vibrations for early cancer detection through AI-powered photoacoustic diagnosis.</p>
+                <a href="https://pragna-ai-bio.github.io/PragnaAI_Web_Software/" class="demo-btn" target="_blank">
+                    Launch PragnaAI Demo <i class="fas fa-external-link-alt"></i>
+                </a>
             </section>
         </div>
     </div>
     
     <div class="footer-text">
-        PragnaAI Research & Development<br>
+        Email: pragna.ai.bio@gmail.com<br>
         © 2025 PragnaAI - Transforming Early Cancer Detection
     </div>
 
     <script>
         // Simple page navigation
         document.addEventListener('DOMContentLoaded', function() {
-            const navLinks = document.querySelectorAll('.nav-link');
+            const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
             const pages = document.querySelectorAll('.page');
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            const mobileNavLinks = document.getElementById('mobile-nav-links');
             
+            // Function to handle navigation
+            function handleNavigation(e) {
+                e.preventDefault();
+                
+                // Remove active class from all links and pages
+                navLinks.forEach(nav => nav.classList.remove('active'));
+                pages.forEach(page => page.classList.remove('active'));
+                
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                // Show the corresponding page
+                const pageId = this.getAttribute('data-page') + '-page';
+                document.getElementById(pageId).classList.add('active');
+                
+                // Close mobile menu if open
+                mobileNavLinks.classList.remove('active');
+                
+                // Scroll to top when switching pages
+                window.scrollTo(0, 0);
+            }
+            
+            // Add click event to all navigation links
             navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    // Remove active class from all links and pages
-                    navLinks.forEach(nav => nav.classList.remove('active'));
-                    pages.forEach(page => page.classList.remove('active'));
-                    
-                    // Add active class to clicked link
-                    this.classList.add('active');
-                    
-                    // Show the corresponding page
-                    const pageId = this.getAttribute('data-page') + '-page';
-                    document.getElementById(pageId).classList.add('active');
-                    
-                    // Scroll to top when switching pages
-                    window.scrollTo(0, 0);
-                });
+                link.addEventListener('click', handleNavigation);
+            });
+            
+            // Mobile menu toggle
+            mobileMenuToggle.addEventListener('click', function() {
+                mobileNavLinks.classList.toggle('active');
+            });
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.header-content') && !e.target.closest('.mobile-nav-links')) {
+                    mobileNavLinks.classList.remove('active');
+                }
             });
         });
     </script>

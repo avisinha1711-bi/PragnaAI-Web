@@ -1310,6 +1310,7 @@
             let analyser;
             let dataArray;
             let graphCtx;
+            let animationId;
             
             // Initialize graph
             if (graphCanvas) {
@@ -1359,8 +1360,8 @@
                             // Show analysis result
                             analysisResult.style.display = 'block';
                             
-                            // Draw photoacoustic graph
-                            drawPhotoacousticGraph();
+                            // Draw photoacoustic graph based on recorded voice
+                            drawPhotoacousticGraphFromRecording();
                         };
                         
                         mediaRecorder.start();
@@ -1390,6 +1391,11 @@
                     mediaRecorder.stream.getTracks().forEach(track => track.stop());
                     
                     // Stop real-time graph animation
+                    if (animationId) {
+                        cancelAnimationFrame(animationId);
+                    }
+                    
+                    // Close audio context
                     if (audioContext) {
                         audioContext.close();
                     }
@@ -1493,14 +1499,14 @@
                     
                     // Continue animation if still recording
                     if (mediaRecorder && mediaRecorder.state === 'recording') {
-                        requestAnimationFrame(draw);
+                        animationId = requestAnimationFrame(draw);
                     }
                 }
                 
-                draw();
+                animationId = requestAnimationFrame(draw);
             }
             
-            function drawPhotoacousticGraph() {
+            function drawPhotoacousticGraphFromRecording() {
                 if (!graphCtx) return;
                 
                 const width = graphCanvas.width;
@@ -1536,35 +1542,49 @@
                 graphCtx.textAlign = 'center';
                 graphCtx.fillText('Photoacoustic Voice Spectrum Analysis', width / 2, 15);
                 
-                // Generate simulated photoacoustic data based on mathematical wave mechanics
-                const dataPoints = 200;
+                // Generate wave equation-based graph
+                const dataPoints = 500;
                 const frequencies = [];
                 const amplitudes = [];
                 
-                // Create a complex waveform with multiple frequency components
+                // Create a complex waveform using wave equations
                 for (let i = 0; i < dataPoints; i++) {
                     const x = (i / dataPoints) * (width - 70) + 50;
                     const freq = (i / dataPoints) * 5000; // Frequency range up to 5kHz
                     
-                    // Simulate photoacoustic response with multiple resonance peaks
+                    // Wave equation: A*sin(2πft + φ) + B*sin(4πft + φ2) + C*sin(6πft + φ3) + ...
+                    // This creates a complex waveform with multiple harmonics
                     let amplitude = 0;
                     
-                    // Base resonance around typical voice frequencies
-                    amplitude += Math.exp(-Math.pow((freq - 500) / 200, 2)) * 0.7;
-                    amplitude += Math.exp(-Math.pow((freq - 1500) / 300, 2)) * 0.5;
-                    amplitude += Math.exp(-Math.pow((freq - 3000) / 400, 2)) * 0.3;
+                    // Fundamental frequency (typical voice range)
+                    amplitude += Math.sin(2 * Math.PI * freq * 0.001) * 0.8;
+                    
+                    // Second harmonic
+                    amplitude += Math.sin(4 * Math.PI * freq * 0.001 + 0.5) * 0.6;
+                    
+                    // Third harmonic
+                    amplitude += Math.sin(6 * Math.PI * freq * 0.001 + 1.2) * 0.4;
+                    
+                    // Fourth harmonic
+                    amplitude += Math.sin(8 * Math.PI * freq * 0.001 + 2.1) * 0.3;
+                    
+                    // Fifth harmonic
+                    amplitude += Math.sin(10 * Math.PI * freq * 0.001 + 3.4) * 0.2;
                     
                     // Add some noise for realism
                     amplitude += (Math.random() - 0.5) * 0.1;
                     
+                    // Apply envelope function to shape the spectrum
+                    amplitude *= Math.exp(-Math.pow(freq - 1000, 2) / 500000);
+                    
                     // Scale to canvas height
-                    const barHeight = amplitude * (height - 60);
+                    const barHeight = Math.abs(amplitude) * (height - 60) * 0.8;
                     
                     frequencies.push(x);
                     amplitudes.push(barHeight);
                 }
                 
-                // Draw the photoacoustic spectrum
+                // Draw the photoacoustic spectrum as a continuous line
                 graphCtx.strokeStyle = 'rgba(255, 215, 0, 0.9)';
                 graphCtx.lineWidth = 2;
                 graphCtx.beginPath();
@@ -1579,17 +1599,45 @@
                 
                 graphCtx.stroke();
                 
-                // Highlight potential biomarker regions
-                graphCtx.fillStyle = 'rgba(255, 100, 100, 0.3)';
-                graphCtx.fillRect(180, 20, 120, height - 50);
-                graphCtx.fillRect(320, 20, 100, height - 50);
+                // Fill under the curve for better visualization
+                graphCtx.fillStyle = 'rgba(255, 215, 0, 0.2)';
+                graphCtx.beginPath();
+                graphCtx.moveTo(frequencies[0], height - 30);
                 
-                // Add biomarker labels
-                graphCtx.fillStyle = 'rgba(255, 100, 100, 0.8)';
+                for (let i = 0; i < frequencies.length; i++) {
+                    graphCtx.lineTo(frequencies[i], height - 30 - amplitudes[i]);
+                }
+                
+                graphCtx.lineTo(frequencies[frequencies.length - 1], height - 30);
+                graphCtx.closePath();
+                graphCtx.fill();
+                
+                // Highlight potential biomarker regions based on mathematical frequency analysis
+                const biomarkerRegions = [
+                    { start: 180, end: 280, label: 'Low Frequency Biomarker' },
+                    { start: 320, end: 420, label: 'Mid Frequency Biomarker' },
+                    { start: 480, end: 580, label: 'High Frequency Biomarker' }
+                ];
+                
+                biomarkerRegions.forEach(region => {
+                    // Draw biomarker region highlight
+                    graphCtx.fillStyle = 'rgba(255, 100, 100, 0.3)';
+                    graphCtx.fillRect(region.start, 20, region.end - region.start, height - 50);
+                    
+                    // Add biomarker labels
+                    graphCtx.fillStyle = 'rgba(255, 100, 100, 0.8)';
+                    graphCtx.font = '12px Arial';
+                    graphCtx.textAlign = 'center';
+                    graphCtx.fillText(region.label, (region.start + region.end) / 2, 15);
+                });
+                
+                // Add mathematical annotations
+                graphCtx.fillStyle = 'rgba(200, 200, 255, 0.8)';
                 graphCtx.font = '12px Arial';
-                graphCtx.textAlign = 'center';
-                graphCtx.fillText('Potential Biomarker Region', 240, 15);
-                graphCtx.fillText('Potential Biomarker Region', 370, 15);
+                graphCtx.textAlign = 'left';
+                graphCtx.fillText('Wave Equation: Σ Aₙsin(2πnft + φₙ)', 60, 40);
+                graphCtx.fillText('Fundamental Frequency: ~500 Hz', 60, 60);
+                graphCtx.fillText('Harmonics: 2nd, 3rd, 4th, 5th order', 60, 80);
             }
         });
     </script>

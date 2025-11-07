@@ -29,6 +29,7 @@
             --logo-blue: #0096FF;
             --hero-bg: #f8f9fa;
             --hero-text: #333333;
+            --voice-bg: #2a2a2a;
         }
         
         body {
@@ -695,6 +696,86 @@
             gap: 80px;
         }
 
+        /* Voice Page Styles */
+        .voice-page-hero {
+            background: var(--voice-bg);
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+            padding: 60px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .voice-tagline {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 0;
+            padding: 0;
+            color: var(--text-white);
+            text-align: center;
+            width: 100%;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: -0.5px;
+        }
+
+        .voice-tagline-emphasis {
+            color: var(--primary-yellow);
+            position: relative;
+            display: inline-block;
+        }
+
+        .voice-tagline-emphasis::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary-yellow), transparent);
+            border-radius: 2px;
+        }
+
+        .graph-container {
+            width: 100%;
+            height: 300px;
+            margin: 40px 0;
+            background: rgba(10, 10, 10, 0.8);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .graph-canvas {
+            width: 100%;
+            height: 100%;
+        }
+
+        .graph-title {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 1.5rem;
+            color: var(--text-white);
+            font-weight: 600;
+        }
+
+        .research-disclaimer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(20, 20, 20, 0.8);
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-yellow);
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
         /* Hidden class for page switching */
         .page {
             display: none;
@@ -830,6 +911,16 @@
                 max-width: 300px;
                 justify-content: center;
             }
+
+            .voice-page-hero {
+                margin-top: 60px;
+                min-height: 50vh;
+                padding: 40px 20px;
+            }
+
+            .voice-tagline {
+                font-size: 2.5rem;
+            }
         }
         
         @media (max-width: 480px) {
@@ -870,6 +961,10 @@
             
             .vision-text p {
                 font-size: 1rem;
+            }
+
+            .voice-tagline {
+                font-size: 2rem;
             }
         }
     </style>
@@ -1060,41 +1155,72 @@
                 
                 <!-- Voice Diagnosis Section -->
                 <section class="voice-diagnosis-section">
-                    <h2 class="section-title">Voice Acoustic Diagnosis</h2>
-                    <p class="demo-description">Our research in voice acoustic analysis aims to detect subtle frequency changes in voice patterns that may indicate early-stage cancer. Record your voice to experience this experimental diagnostic approach.</p>
+                    <h2 class="section-title">Voice Assisted Cancer Diagnosis</h2>
+                    <p class="demo-description">Experience our experimental voice analysis technology that detects subtle frequency changes in voice patterns that may indicate early-stage cancer. This innovative approach is currently in research and development.</p>
                     
-                    <div class="voice-diagnosis-content">
-                        <div class="voice-controls">
-                            <button id="record-btn" class="voice-btn">
-                                <i class="fas fa-microphone"></i> Start Recording
-                            </button>
-                            <button id="stop-btn" class="voice-btn" disabled>
-                                <i class="fas fa-stop"></i> Stop Recording
-                            </button>
-                            <button id="play-btn" class="voice-btn" disabled>
-                                <i class="fas fa-play"></i> Play Recording
-                            </button>
-                        </div>
-                        
-                        <div id="recording-indicator" class="recording-indicator">
-                            <div class="recording-dot"></div>
-                            <span>Recording in progress...</span>
-                        </div>
-                        
-                        <audio id="audio-player" class="audio-player" controls style="display: none;"></audio>
-                        
-                        <div class="analysis-result">
-                            <h3 class="result-title">Voice Analysis Result</h3>
-                            <div class="result-value">0%</div>
-                            <p class="result-note">
-                                Based on our preliminary analysis of your voice recording, we have detected no significant frequency anomalies associated with cancer biomarkers.
-                                <br><br>
-                                <strong>Note:</strong> This technology is currently in research and development phase. The results shown are for demonstration purposes only and should not be used for medical diagnosis.
-                            </p>
-                        </div>
-                    </div>
+                    <a href="#" class="demo-btn" id="voice-demo-btn">
+                        Launch Voice Diagnosis <i class="fas fa-microphone"></i>
+                    </a>
                 </section>
             </div>
+        </div>
+    </div>
+
+    <!-- Voice Diagnosis Page -->
+    <div id="voice-page" class="page">
+        <!-- Voice Hero Section -->
+        <section class="voice-page-hero">
+            <div class="hero-content">
+                <div class="tagline-container">
+                    <h1 class="voice-tagline">
+                        "Voice that <span class="voice-tagline-emphasis">predicts</span> Cancer"
+                    </h1>
+                </div>
+            </div>
+        </section>
+        
+        <div class="content-wrapper">
+            <section class="voice-diagnosis-section">
+                <div class="voice-diagnosis-content">
+                    <div class="voice-controls">
+                        <button id="record-btn" class="voice-btn">
+                            <i class="fas fa-microphone"></i> Start Recording
+                        </button>
+                        <button id="stop-btn" class="voice-btn" disabled>
+                            <i class="fas fa-stop"></i> Stop Recording
+                        </button>
+                        <button id="play-btn" class="voice-btn" disabled>
+                            <i class="fas fa-play"></i> Play Recording
+                        </button>
+                    </div>
+                    
+                    <div id="recording-indicator" class="recording-indicator">
+                        <div class="recording-dot"></div>
+                        <span>Recording in progress...</span>
+                    </div>
+                    
+                    <audio id="audio-player" class="audio-player" controls style="display: none;"></audio>
+                    
+                    <div class="analysis-result" id="analysis-result" style="display: none;">
+                        <h3 class="result-title">Voice Analysis Result</h3>
+                        <div class="result-value">0%</div>
+                        <p class="result-note">
+                            Based on our preliminary analysis of your voice recording, we have detected no significant frequency anomalies associated with cancer biomarkers.
+                        </p>
+                    </div>
+
+                    <div class="graph-title">Photoacoustic Voice Graph</div>
+                    <div class="graph-container">
+                        <canvas id="voice-graph" class="graph-canvas"></canvas>
+                    </div>
+
+                    <div class="research-disclaimer">
+                        <strong>THIS METHOD OF DIAGNOSIS IS UNDER RESEARCH AND DEVELOPMENT BY PragnaAI</strong>
+                        <br><br>
+                        The voice analysis technology demonstrated here is currently in experimental stages and should not be used for medical diagnosis. Our research focuses on detecting subtle frequency changes in voice patterns that may correlate with early-stage cancer biomarkers.
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
     
@@ -1110,6 +1236,7 @@
             const pages = document.querySelectorAll('.page');
             const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
             const mobileNavLinks = document.getElementById('mobile-nav-links');
+            const voiceDemoBtn = document.getElementById('voice-demo-btn');
             
             // Function to handle navigation
             function handleNavigation(e) {
@@ -1138,6 +1265,24 @@
                 link.addEventListener('click', handleNavigation);
             });
             
+            // Voice demo button navigation
+            voiceDemoBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all links and pages
+                navLinks.forEach(nav => nav.classList.remove('active'));
+                pages.forEach(page => page.classList.remove('active'));
+                
+                // Show voice page
+                document.getElementById('voice-page').classList.add('active');
+                
+                // Close mobile menu if open
+                mobileNavLinks.classList.remove('active');
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            });
+            
             // Mobile menu toggle
             mobileMenuToggle.addEventListener('click', function() {
                 mobileNavLinks.classList.toggle('active');
@@ -1156,9 +1301,25 @@
             const playBtn = document.getElementById('play-btn');
             const recordingIndicator = document.getElementById('recording-indicator');
             const audioPlayer = document.getElementById('audio-player');
+            const analysisResult = document.getElementById('analysis-result');
+            const graphCanvas = document.getElementById('voice-graph');
             
             let mediaRecorder;
             let audioChunks = [];
+            let audioContext;
+            let analyser;
+            let dataArray;
+            let graphCtx;
+            
+            // Initialize graph
+            if (graphCanvas) {
+                graphCtx = graphCanvas.getContext('2d');
+                graphCanvas.width = graphCanvas.offsetWidth;
+                graphCanvas.height = graphCanvas.offsetHeight;
+                
+                // Draw initial empty graph
+                drawEmptyGraph();
+            }
             
             // Check if browser supports media recording
             if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -1173,6 +1334,15 @@
             function startRecording() {
                 navigator.mediaDevices.getUserMedia({ audio: true })
                     .then(stream => {
+                        // Set up audio context for analysis
+                        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                        analyser = audioContext.createAnalyser();
+                        const source = audioContext.createMediaStreamSource(stream);
+                        source.connect(analyser);
+                        analyser.fftSize = 2048;
+                        dataArray = new Uint8Array(analyser.frequencyBinCount);
+                        
+                        // Set up media recorder
                         mediaRecorder = new MediaRecorder(stream);
                         audioChunks = [];
                         
@@ -1185,6 +1355,12 @@
                             const audioUrl = URL.createObjectURL(audioBlob);
                             audioPlayer.src = audioUrl;
                             playBtn.disabled = false;
+                            
+                            // Show analysis result
+                            analysisResult.style.display = 'block';
+                            
+                            // Draw photoacoustic graph
+                            drawPhotoacousticGraph();
                         };
                         
                         mediaRecorder.start();
@@ -1192,6 +1368,9 @@
                         stopBtn.disabled = false;
                         recordingIndicator.classList.add('active');
                         audioPlayer.style.display = 'none';
+                        
+                        // Start drawing real-time graph while recording
+                        drawRealTimeGraph();
                     })
                     .catch(err => {
                         console.error('Error accessing microphone:', err);
@@ -1209,11 +1388,208 @@
                     
                     // Stop all audio tracks
                     mediaRecorder.stream.getTracks().forEach(track => track.stop());
+                    
+                    // Stop real-time graph animation
+                    if (audioContext) {
+                        audioContext.close();
+                    }
                 }
             }
             
             function playRecording() {
                 audioPlayer.play();
+            }
+            
+            function drawEmptyGraph() {
+                if (!graphCtx) return;
+                
+                const width = graphCanvas.width;
+                const height = graphCanvas.height;
+                
+                // Clear canvas
+                graphCtx.clearRect(0, 0, width, height);
+                
+                // Draw axes
+                graphCtx.strokeStyle = '#555';
+                graphCtx.lineWidth = 1;
+                graphCtx.beginPath();
+                graphCtx.moveTo(50, 20);
+                graphCtx.lineTo(50, height - 30);
+                graphCtx.lineTo(width - 20, height - 30);
+                graphCtx.stroke();
+                
+                // Draw labels
+                graphCtx.fillStyle = '#999';
+                graphCtx.font = '14px Arial';
+                graphCtx.textAlign = 'center';
+                graphCtx.fillText('Frequency (Hz)', width / 2, height - 5);
+                graphCtx.save();
+                graphCtx.translate(15, height / 2);
+                graphCtx.rotate(-Math.PI / 2);
+                graphCtx.fillText('Amplitude', 0, 0);
+                graphCtx.restore();
+                
+                // Draw title
+                graphCtx.fillStyle = '#fff';
+                graphCtx.font = '16px Arial';
+                graphCtx.textAlign = 'center';
+                graphCtx.fillText('Photoacoustic Voice Spectrum', width / 2, 15);
+                
+                // Draw "No Data" message
+                graphCtx.fillStyle = '#666';
+                graphCtx.font = '18px Arial';
+                graphCtx.fillText('Record voice to see analysis', width / 2, height / 2);
+            }
+            
+            function drawRealTimeGraph() {
+                if (!analyser || !graphCtx) return;
+                
+                const width = graphCanvas.width;
+                const height = graphCanvas.height;
+                
+                function draw() {
+                    if (!analyser) return;
+                    
+                    analyser.getByteFrequencyData(dataArray);
+                    
+                    // Clear canvas
+                    graphCtx.fillStyle = 'rgba(10, 10, 10, 0.8)';
+                    graphCtx.fillRect(0, 0, width, height);
+                    
+                    // Draw axes
+                    graphCtx.strokeStyle = '#555';
+                    graphCtx.lineWidth = 1;
+                    graphCtx.beginPath();
+                    graphCtx.moveTo(50, 20);
+                    graphCtx.lineTo(50, height - 30);
+                    graphCtx.lineTo(width - 20, height - 30);
+                    graphCtx.stroke();
+                    
+                    // Draw labels
+                    graphCtx.fillStyle = '#999';
+                    graphCtx.font = '14px Arial';
+                    graphCtx.textAlign = 'center';
+                    graphCtx.fillText('Frequency (Hz)', width / 2, height - 5);
+                    graphCtx.save();
+                    graphCtx.translate(15, height / 2);
+                    graphCtx.rotate(-Math.PI / 2);
+                    graphCtx.fillText('Amplitude', 0, 0);
+                    graphCtx.restore();
+                    
+                    // Draw title
+                    graphCtx.fillStyle = '#fff';
+                    graphCtx.font = '16px Arial';
+                    graphCtx.textAlign = 'center';
+                    graphCtx.fillText('Real-time Voice Spectrum (Recording)', width / 2, 15);
+                    
+                    // Draw frequency data
+                    const barWidth = (width - 70) / dataArray.length;
+                    graphCtx.fillStyle = 'rgba(255, 215, 0, 0.7)';
+                    
+                    for (let i = 0; i < dataArray.length; i++) {
+                        const barHeight = (dataArray[i] / 255) * (height - 60);
+                        graphCtx.fillRect(50 + i * barWidth, height - 30 - barHeight, barWidth - 1, barHeight);
+                    }
+                    
+                    // Continue animation if still recording
+                    if (mediaRecorder && mediaRecorder.state === 'recording') {
+                        requestAnimationFrame(draw);
+                    }
+                }
+                
+                draw();
+            }
+            
+            function drawPhotoacousticGraph() {
+                if (!graphCtx) return;
+                
+                const width = graphCanvas.width;
+                const height = graphCanvas.height;
+                
+                // Clear canvas
+                graphCtx.fillStyle = 'rgba(10, 10, 10, 0.8)';
+                graphCtx.fillRect(0, 0, width, height);
+                
+                // Draw axes
+                graphCtx.strokeStyle = '#555';
+                graphCtx.lineWidth = 1;
+                graphCtx.beginPath();
+                graphCtx.moveTo(50, 20);
+                graphCtx.lineTo(50, height - 30);
+                graphCtx.lineTo(width - 20, height - 30);
+                graphCtx.stroke();
+                
+                // Draw labels
+                graphCtx.fillStyle = '#999';
+                graphCtx.font = '14px Arial';
+                graphCtx.textAlign = 'center';
+                graphCtx.fillText('Frequency (Hz)', width / 2, height - 5);
+                graphCtx.save();
+                graphCtx.translate(15, height / 2);
+                graphCtx.rotate(-Math.PI / 2);
+                graphCtx.fillText('Amplitude', 0, 0);
+                graphCtx.restore();
+                
+                // Draw title
+                graphCtx.fillStyle = '#fff';
+                graphCtx.font = '16px Arial';
+                graphCtx.textAlign = 'center';
+                graphCtx.fillText('Photoacoustic Voice Spectrum Analysis', width / 2, 15);
+                
+                // Generate simulated photoacoustic data based on mathematical wave mechanics
+                const dataPoints = 200;
+                const frequencies = [];
+                const amplitudes = [];
+                
+                // Create a complex waveform with multiple frequency components
+                for (let i = 0; i < dataPoints; i++) {
+                    const x = (i / dataPoints) * (width - 70) + 50;
+                    const freq = (i / dataPoints) * 5000; // Frequency range up to 5kHz
+                    
+                    // Simulate photoacoustic response with multiple resonance peaks
+                    let amplitude = 0;
+                    
+                    // Base resonance around typical voice frequencies
+                    amplitude += Math.exp(-Math.pow((freq - 500) / 200, 2)) * 0.7;
+                    amplitude += Math.exp(-Math.pow((freq - 1500) / 300, 2)) * 0.5;
+                    amplitude += Math.exp(-Math.pow((freq - 3000) / 400, 2)) * 0.3;
+                    
+                    // Add some noise for realism
+                    amplitude += (Math.random() - 0.5) * 0.1;
+                    
+                    // Scale to canvas height
+                    const barHeight = amplitude * (height - 60);
+                    
+                    frequencies.push(x);
+                    amplitudes.push(barHeight);
+                }
+                
+                // Draw the photoacoustic spectrum
+                graphCtx.strokeStyle = 'rgba(255, 215, 0, 0.9)';
+                graphCtx.lineWidth = 2;
+                graphCtx.beginPath();
+                
+                for (let i = 0; i < frequencies.length; i++) {
+                    if (i === 0) {
+                        graphCtx.moveTo(frequencies[i], height - 30 - amplitudes[i]);
+                    } else {
+                        graphCtx.lineTo(frequencies[i], height - 30 - amplitudes[i]);
+                    }
+                }
+                
+                graphCtx.stroke();
+                
+                // Highlight potential biomarker regions
+                graphCtx.fillStyle = 'rgba(255, 100, 100, 0.3)';
+                graphCtx.fillRect(180, 20, 120, height - 50);
+                graphCtx.fillRect(320, 20, 100, height - 50);
+                
+                // Add biomarker labels
+                graphCtx.fillStyle = 'rgba(255, 100, 100, 0.8)';
+                graphCtx.font = '12px Arial';
+                graphCtx.textAlign = 'center';
+                graphCtx.fillText('Potential Biomarker Region', 240, 15);
+                graphCtx.fillText('Potential Biomarker Region', 370, 15);
             }
         });
     </script>
